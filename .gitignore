@@ -1,2 +1,4 @@
 *.zip
 AdminLTE*
+plugins/*
+dist/*
