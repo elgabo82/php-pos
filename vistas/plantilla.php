@@ -23,41 +23,48 @@
     <!-- Bootstrap 4 -->
     <script src="vistas/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- AdminLTE App -->
-    <script src="vistas/dist/js/adminlte.min.js"></script>
+    <script src="vistas/dist/js/adminlte.js"></script>
     <!-- AdminLTE for demo purposes
     <script src="./vistas/dist/js/demo.js"></script> -->
 
 </head> <!-- sidebar-collapse -->
-<body class="hold-transition sidebar-mini layout-fixed">
-<!-- Site wrapper -->
-<div class="wrapper">
+<body class="hold-transition sidebar-mini layout-fixed login-page">
+
 <?php
+
+if (isset($_SESSION["sesionIniciada"]) && $_SESSION["sesionIniciada"] == "ok"){
+    echo '<div class="wrapper">';
+
     include "modulos/header.php";
     include "modulos/menu.php";
 
-if (isset($_GET["ruta"])) {
-  if ($_GET["ruta"] == "inicio" ||
-      $_GET["ruta"] == "perfil" ||
-      $_GET["ruta"] == "usuarios" || 
-      $_GET["ruta"] == "config" || 
-      $_GET["ruta"] == "categorias" || 
-      $_GET["ruta"] == "productos" ||
-      $_GET["ruta"] == "clientes" ||
-      $_GET["ruta"] == "ventas" ||
-      $_GET["ruta"] == "reporteventas") {
-    include "modulos/".$_GET["ruta"].".php";
+  if (isset($_GET["ruta"])) {
+    if ($_GET["ruta"] == "inicio" ||
+        $_GET["ruta"] == "perfil" ||
+        $_GET["ruta"] == "usuarios" || 
+        $_GET["ruta"] == "config" || 
+        $_GET["ruta"] == "categorias" || 
+        $_GET["ruta"] == "productos" ||
+        $_GET["ruta"] == "clientes" ||
+        $_GET["ruta"] == "ventas" ||
+        $_GET["ruta"] == "reporteventas") {
+      include "modulos/".$_GET["ruta"].".php";
+    }
+    else {
+      include "modulos/error.php";
+    }
+  } else {
+    include "modulos/inicio.php";
   }
-  else {
-    include "modulos/error.php";
-  }
-} else {
-  include "modulos/inicio.php";
-}
     include "modulos/pie.php";
-?>
-</div>
-<!-- ./wrapper -->
 
+  echo '</div>';
+} else {
+  include "modulos/login.php";
+}
+
+
+?>
 
 </body>
 </html>
