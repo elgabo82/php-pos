@@ -1,4 +1,5 @@
 *.zip
 AdminLTE*
-plugins/*
+*/plugins/*
 dist/*
+vistas/plugins/*
