@@ -4,16 +4,15 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Tablero
-            <small class="text-blue"> - Panel de control</small>
+            <h1>Administrar usuarios
             </h1>            
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item">
                 <i class="fas fa-tachometer nav-icon text-warning"></i>
-                  <a href="#">Inicio</a></li>
-              <li class="breadcrumb-item active">Panel</li>
+                  <a href="inicio">Inicio</a></li>
+              <li class="breadcrumb-item active">Administrar usuarios</li>
             </ol>
           </div>
         </div>

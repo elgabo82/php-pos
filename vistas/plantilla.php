@@ -7,6 +7,8 @@
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  <link rel="icon" href="vistas/img/favicon.ico"> <!-- Icono -->
+
   <!-- Font Awesome -->
   <link rel="stylesheet" href="vistas/plugins/fontawesome-free/css/all.min.css">
   <!-- Ionicons -->
@@ -32,7 +34,25 @@
 <?php
     include "modulos/header.php";
     include "modulos/menu.php";
-    include "modulos/contenido.php";
+
+if (isset($_GET["ruta"])) {
+  if ($_GET["ruta"] == "inicio" ||
+      $_GET["ruta"] == "perfil" ||
+      $_GET["ruta"] == "usuarios" || 
+      $_GET["ruta"] == "config" || 
+      $_GET["ruta"] == "categorias" || 
+      $_GET["ruta"] == "productos" ||
+      $_GET["ruta"] == "clientes" ||
+      $_GET["ruta"] == "ventas" ||
+      $_GET["ruta"] == "reporteventas") {
+    include "modulos/".$_GET["ruta"].".php";
+  }
+  else {
+    include "modulos/error.php";
+  }
+} else {
+  include "modulos/inicio.php";
+}
     include "modulos/pie.php";
 ?>
 </div>
