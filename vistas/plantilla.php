@@ -32,6 +32,8 @@
 <?php
     include "modulos/header.php";
     include "modulos/menu.php";
+    include "modulos/contenido.php";
+    include "modulos/pie.php";
 ?>
 </div>
 <!-- ./wrapper -->

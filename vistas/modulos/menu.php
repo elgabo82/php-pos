@@ -27,26 +27,66 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="../../index.html" class="nav-link">
-                  <i class="far fa-user nav-icon"></i>
-                  <p>Usuarios</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../../index2.html" class="nav-link">
-                  <i class="fa fa-th nav-icon"></i>
-                  <p>Categor&iacute;s</p>
-                </a>
-              </li>
-              <li class="nav-item">
                 <a href="../../index3.html" class="nav-link">
                   <i class="fa fa-user nav-icon"></i>
+                  <p>Perfil del Usuario</p>
+                </a>
+              </li>              
+              <li class="nav-item">
+                <a href="../../index.html" class="nav-link">
+                  <i class="fas fa-users text-blue nav-icon"></i>
                   <p>Usuarios</p>
+                </a>
+              </li>              
+              <li class="nav-item">
+                <a href="../../index3.html" class="nav-link">
+                  <i class="fas fa-cogs text-warning nav-icon"></i>
+                  <p>Configuraci&oacute;n</p>
                 </a>
               </li>
             </ul>
           </li>
-          
+          <li class="nav-item">
+          <a href="#" class="nav-link">
+              <i class="nav-icon fa fa-th text-green"></i>
+              <p>Categor&iacute;as</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="../../index2.html" class="nav-link">
+              <i class="far fa-circle nav-icon text-warning"></i>
+              <p>Productos</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="../../index2.html" class="nav-link">
+              <i class="far fa-handshake nav-icon text-yellow"></i>
+              <p>Clientes</p>
+            </a>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-chart-bar"></i>
+              <p>
+                Ventas
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="../../index3.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Administrar ventas</p>
+                </a>
+              </li>              
+              <li class="nav-item">
+                <a href="../../index.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Crear ventas</p>
+                </a>
+              </li>              
+            </ul>
+          </li>          
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

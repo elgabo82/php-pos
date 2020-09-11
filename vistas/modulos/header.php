@@ -12,7 +12,7 @@
       <!-- Messages Dropdown Menu -->
       <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
-          <i class="far fa-comments"></i>
+          <i class="far fa-user"></i>
           <!--<span class="badge badge-info navbar-badge">Usuario Administrador</span>-->
           <span class="badge">Usuario Administrador</span>
         </a>
@@ -65,7 +65,7 @@
             <!-- Message End -->
           </a>
           <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
+          <a href="#" class="dropdown-item dropdown-footer">Salir</a>
         </div>
       </li>
       
