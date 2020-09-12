@@ -24,20 +24,15 @@
 
       <!-- Default box -->
       <div class="card">
-        <div class="card-header">
-          <!--<h3 class="card-title">Title</h3>
-          <div class="card-tools">
-            <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
-              <i class="fas fa-minus"></i></button>
-            <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
-              <i class="fas fa-times"></i></button>
-          </div>-->
+        <div class="card-header"> 
           <button class="btn btn-primary" data-toggle="modal" data-target="#modalAgregarUsuario">
             Agregar usuario
           </button>
         </div>
+
         <div class="card-body">
-          <table class="table table-bordered table-striped tablas">
+        
+          <table id="tabla" class="table table-bordered dt-responsive table-striped tabla">
             <thead>
               <tr>
                 <th>#ID</th>
@@ -53,8 +48,8 @@
             <tbody>
               <tr>
                 <td>1</td>
-                <td>2</td>
-                <td>3</td>
+                <td>Usuario 1</td>
+                <td>A</td>
                 <td>4</td>
                 <td><img src="vistas/img/usuarios/default/anonymous.png" class="img-thumbnail" width="40px"></td>
                 <td><button class="btn btn-success btn-xs">Activado</button></td>
@@ -66,20 +61,37 @@
                   </div>
                 </td>
               </tr>
-              <tr>
-            </tbody>
-            <tfoot>
-              <tr>
-                <th>#ID</th>
-                <th>Nombre</th>
-                <th>Usuario</th>
-                <th>Perfil</th>
-                <th>Foto</th>
-                <th>Estado</th>
-                <th>&Uacute;ltimo inicio de ses.</th>
-                <th>Acciones</th>
+              <tr>              
+                <td>2</td>
+                <td>Usuario 2</td>
+                <td>B</td>
+                <td>4</td>
+                <td><img src="vistas/img/usuarios/default/anonymous.png" class="img-thumbnail" width="40px"></td>
+                <td><button class="btn btn-success btn-xs">Activado</button></td>
+                <td>7</td>
+                <td>
+                  <div class="btn-group">
+                    <button class="btn btn-warning"><i class="fas fa-edit"></i></button>
+                    <button class="btn btn-danger"><i class="fa fa-times"></i></button>
+                  </div>
+                </td>
               </tr>
-            </tfoot>
+              <tr>              
+                <td>3</td>
+                <td>Usuario 3</td>
+                <td>C</td>
+                <td>4</td>
+                <td><img src="vistas/img/usuarios/default/anonymous.png" class="img-thumbnail" width="40px"></td>
+                <td><button class="btn btn-success btn-xs">Activado</button></td>
+                <td>7</td>
+                <td>
+                  <div class="btn-group">
+                    <button class="btn btn-warning"><i class="fas fa-edit"></i></button>
+                    <button class="btn btn-danger"><i class="fa fa-times"></i></button>
+                  </div>
+                </td>
+              </tr>                                              
+            </tbody>            
           </table>                  
         </div>
         <!-- /.card-body -->

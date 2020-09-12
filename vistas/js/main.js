@@ -1,2 +1,7 @@
 
-$(".tablas").DataTable();
+$(function () {
+    $("#tabla").DataTable({
+        "responsive": true,
+        "autoWidth": false,
+    });
+});

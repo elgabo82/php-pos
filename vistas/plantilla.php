@@ -13,6 +13,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <link rel="icon" href="vistas/img/favicon.ico"> <!-- Icono -->
+  <link rel="stylesheet" href="vistas/dist/css/AdminLTE.css">
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="vistas/plugins/fontawesome-free/css/all.min.css">
@@ -24,32 +25,39 @@
   <link rel="stylesheet" href="vistas/dist/css/adminlte.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <!-- DataTables -->
   <link rel="stylesheet" href="vistas/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-  <link rel="stylesheet" href="vistas/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+  <link rel="stylesheet" href="vistas/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">  
+    
+  <!-- jQuery -->
+  <script src="vistas/plugins/jquery/jquery.min.js"></script>
+  <!-- Bootstrap 4 -->
+  <script src="vistas/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- SweetAlert2 -->
+  <script src="vistas/plugins/sweetalert2/sweetalert2.all.js"></script> 
+  
+  <!-- AdminLTE for demo purposes
+  <script src="./vistas/dist/js/demo.js"></script> -->
 
-    <!-- jQuery -->
-    <script src="vistas/plugins/jquery/jquery.min.js"></script>
-    <!-- Bootstrap 4 -->
-    <script src="vistas/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- AdminLTE App -->
-    <script src="vistas/dist/js/adminlte.js"></script>
-    <!-- SweetAlert2 -->
-    <script src="vistas/plugins/sweetalert2/sweetalert2.min.js"></script>
+  <!-- DataTables -->
+  <script src="vistas/plugins/datatables/jquery.dataTables.min.js"></script>
+  <script src="vistas/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+  <script src="vistas/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+  <script src="vistas/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<!-- AdminLTE App -->
+<script src="vistas/dist/js/adminlte.js"></script>
+  
 
-    <!-- DataTables -->
-    <script src="vistas/plugins/datatables/jquery.dataTables.min.js"></script>
-    <script src="vistas/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-    <script src="vistas/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-    <script src="vistas/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-    <!-- AdminLTE for demo purposes
-    <script src="./vistas/dist/js/demo.js"></script> -->
 
-    <!-- Principal -->
-    <script src="vistas/js/main.js"></script>
+  <!-- Principal -->
+  <script src="vistas/js/main.js"></script>
 
-    <!-- Alertas -->
-    <script src="vistas/js/alertas.js"></script>
+  <!-- Alertas -->
+  <script src="vistas/js/alertas.js"></script>  
 
+<!--<script>
+    $.noConflict();
+</script>-->
 </head> <!-- sidebar-collapse -->
 <!-- Comentada y reubicada luego de la validación de la sesión -->
 <!--<body class="hold-transition sidebar-mini layout-fixed">-->
