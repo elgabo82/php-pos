@@ -12,7 +12,7 @@
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item">
                 <i class="fas fa-tachometer nav-icon text-warning"></i>
-                  <a href="inicio">Inicio</a></li>
+                  <a href="#">Inicio</a></li>
               <li class="breadcrumb-item active">Panel</li>
             </ol>
           </div>

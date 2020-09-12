@@ -20332,7 +20332,7 @@ html.maximized-card {
   flex-direction: column;
   height: 100vh;
   -ms-flex-pack: center;
-  justify-content: center;
+  justify-content: center;  
 }
 
 /* Agregado el 11-09-2020 15:15 */

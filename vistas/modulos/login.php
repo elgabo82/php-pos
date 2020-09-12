@@ -1,5 +1,4 @@
 <div id="fondo"></div>
-
 <div class="login-box">
     <div class="login-logo">    
         <a href="https://www.grupofmo.com" target="_blank">
