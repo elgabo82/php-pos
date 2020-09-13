@@ -7,5 +7,12 @@
 ### CSS3
 ### PHP
 ### Javascript
+### Ajax
+### Bootstrap
+### DataTables
+### Much&oacute;s m&aacute;s
 
-gabrielmorejon@gmail.com
+
+
+## gabrielmorejon@gmail.com
+## gabriel@grupofmo.com
