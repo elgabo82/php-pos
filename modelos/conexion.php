@@ -2,12 +2,18 @@
 
 class Conexion {
     public static function conectar() {
-        $enlace = new PDO("mysql:host=localhost;dbname=pos", 
+
+        try {
+        $db = new PDO("mysql:host=localhost;dbname=pos", 
                             "usuariopos", 
                             "P0S.2020!");
 
-        $enlace -> exec("SET NAMES utf8");
-
-        return $enlace;
+        $db -> exec("SET NAMES utf8");
+        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        return $db;
+        }
+        catch (PDOException $e){
+            echo "Error: " . $e->getMessage();            
+        }        
     }
 }

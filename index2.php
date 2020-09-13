@@ -1,3 +1,62 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>WebPOS - GrupoFMO &copy;2020</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="icon" href="vistas/img/favicon.ico"> <!-- Icono -->
+  <link rel="stylesheet" href="vistas/dist/css/adminlte.css">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="vistas/plugins/fontawesome-free/css/all.min.css">
+  <!-- SweetAlert2 -->
+  <link rel="stylesheet" href="vistas/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- overlayScrollbars -->
+  <link rel="stylesheet" href="vistas/dist/css/adminlte.css">
+  <!-- Google Font: Source Sans Pro -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="vistas/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="vistas/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">  
+    
+  <!-- jQuery -->
+  <script src="vistas/plugins/jquery/jquery.min.js"></script>
+  <!-- Bootstrap 4 -->
+  <script src="vistas/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- SweetAlert2 -->
+  <script src="vistas/plugins/sweetalert2/sweetalert2.all.js"></script> 
+  
+  <!-- AdminLTE for demo purposes
+  <script src="./vistas/dist/js/demo.js"></script> -->
+
+  <!-- DataTables -->
+  <script src="vistas/plugins/datatables/jquery.dataTables.min.js"></script>
+  <script src="vistas/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+  <script src="vistas/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+  <script src="vistas/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+  <!-- AdminLTE App -->
+  <script src="vistas/dist/js/adminlte.js"></script>
+  
+
+
+  <!-- Principal -->
+  <script src="vistas/js/main.js"></script>
+
+  <!-- Alertas -->
+  <!--<script src="vistas/js/alertas.js"></script>-->
+
+<!--<script>
+    $.noConflict();
+</script>-->
+</head> <!-- sidebar-collapse -->
+<!-- Comentada y reubicada luego de la validación de la sesión -->
+<!--<body class="hold-transition sidebar-mini layout-fixed">-->
+<body>
+
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -135,9 +194,7 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="fa fa-key"></i></span>
                   <input type="text" class="form-control input-lg" placeholder="Usuario" 
-                    name="nuevoUsuario" 
-                    autocomplete="username"
-                    id="nuevoUsuario" required>
+                    name="nuevoUsuario" id="nuevoUsuario" autocomplete="username" required>
                 </div>                
               </div>
             </div>
@@ -148,8 +205,7 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="fa fa-lock"></i></span>
                   <input type="password" class="form-control input-lg" placeholder="Contraseña" 
-                    autocomplete="current-password"
-                    name="nuevaClave" id="nuevaClave" required>
+                    name="nuevaClave" id="nuevaClave" autocomplete="current-password" required>
                 </div>                
               </div>
             </div>
@@ -172,10 +228,11 @@
             <!-- Foto de perfil -->
             <div class="form-group">
               <div class="panel">Subir foto</div>
-              <input type="file" class="nuevaFoto" name="nuevaFoto" id="nuevaFoto">
-              <p class="help-block">Peso m&aacute;ximo 3MB</p>
-              <img src="vistas/img/usuarios/default/anonymous.png" 
-                class="img-thumbnail" id="previsualizar" name="previsualizar" width="100px">
+              <input type="file" id="nuevaFoto" name="nuevaFoto" id="nuevaFoto">
+              <p class="help-block">
+                Peso m&aacute;ximo 12MB
+              </p>
+              <img src="vistas/img/usuarios/default/anonymous.png" class="img-thumbnail" width="100px">
             </div>
           </div>
         </div>
@@ -183,10 +240,37 @@
         <!-- Modal footer -->
         <div class="modal-footer">
           <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
-          <button type="submit" class="btn btn-primary swalDefaultWarning">Guardar</button>
+          <button type="submit" class="btn btn-primary">Guardar</button>
         </div>
       
-        <?php          
+        <?php
+
+          class ControladorUsuarios {
+            /* Registro de usuario */
+            static public function ctrCrearUsuario(){
+                //echo 'Ingresando a la función ctrCrearUsuario\n';
+                
+                if (isset($_POST["nuevoUsuario"])) {
+                    if (preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevoNombre"]) &&
+                        preg_match('/^[a-zA-Z0-9]+$/', $_POST["nuevoUsuario"]) && 
+                        preg_match('/^[a-zA-Z0-9!¡#@.-_]+$/', $_POST["nuevaClave"])) {
+
+                    } 
+                    else {
+                      var_dump($_POST["nuevoUsuario"]);
+                        echo '<script>                                                
+
+                        alert(
+                          "Error de ingreso de datos"
+                        );
+                        
+                        </script>';         
+                    }
+                  
+                }
+
+            }
+          }
 
           $crearUsuario = new ControladorUsuarios();
           $crearUsuario -> ctrCrearUsuario();
@@ -197,3 +281,6 @@
     </div>
   </div>
 </div>
+
+</body>
+</html>

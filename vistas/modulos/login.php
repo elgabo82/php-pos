@@ -17,7 +17,9 @@
 
         <form method="post">
             <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Usuario" name="idUsuario" required>
+            <input type="text" class="form-control" placeholder="Usuario" 
+                autocomplete="username" 
+                name="idUsuario" required>
             <div class="input-group-append">
                 <div class="input-group-text">
                 <span class="fas fa-user"></span>
@@ -25,7 +27,9 @@
             </div>
             </div>
             <div class="input-group mb-3">
-            <input type="password" class="form-control" placeholder="Clave" name="passUsuario">
+            <input type="password" class="form-control" placeholder="Clave" 
+                autocomplete="current-password"
+                name="passUsuario">
             <div class="input-group-append">
                 <div class="input-group-text">
                 <span class="fas fa-lock"></span>

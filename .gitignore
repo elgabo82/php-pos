@@ -3,3 +3,4 @@ AdminLTE*
 */plugins/*
 dist/*
 vistas/plugins/*
+*.jpg

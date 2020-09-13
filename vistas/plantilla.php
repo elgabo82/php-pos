@@ -13,12 +13,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <link rel="icon" href="vistas/img/favicon.ico"> <!-- Icono -->
-  <link rel="stylesheet" href="vistas/dist/css/AdminLTE.css">
+  <link rel="stylesheet" href="vistas/dist/css/adminlte.css">
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="vistas/plugins/fontawesome-free/css/all.min.css">
   <!-- SweetAlert2 -->
   <link rel="stylesheet" href="vistas/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
+  <!-- Toastr -->
+  <link rel="stylesheet" href="vistas/plugins/toastr/toastr.min.css">  
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- overlayScrollbars -->
@@ -34,7 +36,9 @@
   <!-- Bootstrap 4 -->
   <script src="vistas/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
   <!-- SweetAlert2 -->
-  <script src="vistas/plugins/sweetalert2/sweetalert2.all.js"></script> 
+  <script src="vistas/plugins/sweetalert2/sweetalert2.min.js"></script>
+  <!-- Toastr -->
+  <script src="vistas/plugins/toastr/toastr.min.js"></script>
   
   <!-- AdminLTE for demo purposes
   <script src="./vistas/dist/js/demo.js"></script> -->
@@ -44,8 +48,8 @@
   <script src="vistas/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
   <script src="vistas/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
   <script src="vistas/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-<!-- AdminLTE App -->
-<script src="vistas/dist/js/adminlte.js"></script>
+  <!-- AdminLTE App -->
+  <script src="vistas/dist/js/adminlte.js"></script>
   
 
 
@@ -53,7 +57,7 @@
   <script src="vistas/js/main.js"></script>
 
   <!-- Alertas -->
-  <script src="vistas/js/alertas.js"></script>  
+  <!--<script src="vistas/js/alertas.js"></script>-->
 
 <!--<script>
     $.noConflict();
@@ -103,6 +107,6 @@ if (isset($_SESSION["sesionIniciada"]) && $_SESSION["sesionIniciada"] == "ok"){
 
 
 ?>
-
+<script src="vistas/js/usuarios.js"></script>
 </body>
 </html>

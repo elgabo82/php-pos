@@ -12,60 +12,38 @@
       <!-- Messages Dropdown Menu -->
       <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#">
-          <i class="far fa-user"></i>
+          <!--<i class="far fa-user"></i>-->
+          <i class="fas fa-user"></i>
           <!--<span class="badge badge-info navbar-badge">Usuario Administrador</span>-->
-          <span class="badge">Usuario Administrador</span>
+          <span class="badge">Usuario: <?php echo $_SESSION["usuario"]; ?></span>
         </a>
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
           <a href="#" class="dropdown-item">
             <!-- Message Start -->
             <div class="media">
-              <img src="vistas/dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+              <?php 
+              if ($_SESSION["foto"] != "") {
+                echo '<img src="'.$_SESSION["foto"].'" alt="Avatar de Usuario" class="img-size-50 mr-3 img-circle">';
+              }
+              else {
+                echo '<img src="vistas/img/usuarios/default/anonymous.png" alt="Avatar de Usuario" class="img-size-50 mr-3 img-circle">';
+              }
+              ?>              
               <div class="media-body">
                 <h3 class="dropdown-item-title">
-                  Brad Diesel
-                  <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
+                <?php echo $_SESSION["nombre"]; ?>
+                  <!--<span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>-->
                 </h3>
-                <p class="text-sm">Call me whenever you can...</p>
-                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+                <!--<p class="text-sm">Call me whenever you can...</p>-->
+                <?php echo '<p class="text-sm">'.$_SESSION["nombre"].'</p>'; ?>
+                <?php echo '<p class="text-sm text-muted"><i class="far fa-clock mr-1"></i>'.$_SESSION["ultimo_login"].'</p>'; ?>
+                <!--<p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>-->
               </div>
             </div>
             <!-- Message End -->
           </a>
           <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <!-- Message Start -->
-            <div class="media">
-              <img src="vistas/dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-              <div class="media-body">
-                <h3 class="dropdown-item-title">
-                  John Pierce
-                  <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
-                </h3>
-                <p class="text-sm">I got your message bro</p>
-                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-              </div>
-            </div>
-            <!-- Message End -->
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            <!-- Message Start -->
-            <div class="media">
-              <img src="vistas/dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
-              <div class="media-body">
-                <h3 class="dropdown-item-title">
-                  Nora Silvester
-                  <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
-                </h3>
-                <p class="text-sm">The subject goes here</p>
-                <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
-              </div>
-            </div>
-            <!-- Message End -->
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item dropdown-footer">Salir</a>
+          <a href="cerrar" class="dropdown-item dropdown-footer">Salir</a>
         </div>
       </li>
       

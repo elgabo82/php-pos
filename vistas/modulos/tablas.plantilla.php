@@ -35,7 +35,7 @@
           <table id="tabla" class="table table-bordered dt-responsive table-striped tabla">
             <thead>
               <tr>
-                <th style="width: 10px">#</th>
+                <th>#ID</th>
                 <th>Nombre</th>
                 <th>Usuario</th>
                 <th>Perfil</th>
@@ -108,7 +108,7 @@
 <div class="modal fade" id="modalAgregarUsuario" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
-      <form method="post" enctype="multipart/form-data">
+      <form method="post" enctype="multipart/form-data" role="form">
         <!-- Modal Header -->
         <div class="modal-header" style="background: #3c8dbc; color: white;">
           <h4 class="modal-title">Agregar usuario</h4>
@@ -123,9 +123,9 @@
               <div class="input-group">            
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="fa fa-user"></i></span>
-                  <input type="text" class="form-control input-lg" placeholder="Nombres y Apellidos" 
-                    name="nuevoNombre" id="nuevoNombre" required>
-                </div>                
+                </div>
+                <input type="text" class="form-control input-lg" placeholder="Nombres y Apellidos" 
+                  name="nuevoNombre" required>
               </div>
             </div>
 
@@ -134,11 +134,9 @@
               <div class="input-group">            
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="fa fa-key"></i></span>
-                  <input type="text" class="form-control input-lg" placeholder="Usuario" 
-                    name="nuevoUsuario" 
-                    autocomplete="username"
-                    id="nuevoUsuario" required>
-                </div>                
+                </div>
+                <input type="text" class="form-control input-lg" placeholder="Usuario" 
+                  name="nuevoUsuario" required>
               </div>
             </div>
 
@@ -147,10 +145,9 @@
               <div class="input-group">            
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="fa fa-lock"></i></span>
-                  <input type="password" class="form-control input-lg" placeholder="Contraseña" 
-                    autocomplete="current-password"
-                    name="nuevaClave" id="nuevaClave" required>
-                </div>                
+                </div>
+                <input type="password" class="form-control input-lg" placeholder="Contraseña" 
+                  name="nuevaClave" required>
               </div>
             </div>
 
@@ -160,7 +157,7 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="fa fa-users"></i></span>
                 </div>
-                <select name="nuevoPerfil" class="form-control input-lg" id="nuevoPerfil">
+                <select name="nuevoPerfil" class="form-control input-lg">
                   <option value="">Seleccione el perfil</option>
                   <option value="Administrador">Administrador</option>
                   <option value="Usuario">Usuario</option>
@@ -172,27 +169,20 @@
             <!-- Foto de perfil -->
             <div class="form-group">
               <div class="panel">Subir foto</div>
-              <input type="file" class="nuevaFoto" name="nuevaFoto" id="nuevaFoto">
-              <p class="help-block">Peso m&aacute;ximo 3MB</p>
-              <img src="vistas/img/usuarios/default/anonymous.png" 
-                class="img-thumbnail" id="previsualizar" name="previsualizar" width="100px">
+              <input type="file" id="nuevaFoto" name="nuevaFoto">
+              <p class="help-block">
+                Peso m&aacute;ximo 12MB
+              </p>
+              <img src="vistas/img/usuarios/default/anonymous.png" class="img-thumbnail" width="100px">
             </div>
           </div>
         </div>
 
         <!-- Modal footer -->
         <div class="modal-footer">
-          <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
-          <button type="submit" class="btn btn-primary swalDefaultWarning">Guardar</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Salir</button>
+          <button type="submit" class="btn btn-primary" data-dismiss="modal">Guardar</button>
         </div>
-      
-        <?php          
-
-          $crearUsuario = new ControladorUsuarios();
-          $crearUsuario -> ctrCrearUsuario();
-
-        ?>
-
       </form>
     </div>
   </div>
