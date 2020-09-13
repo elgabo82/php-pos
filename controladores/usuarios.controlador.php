@@ -27,6 +27,7 @@ class ControladorUsuarios {
                             $_SESSION["id"] = $respuesta["id"];
                             $_SESSION["nombre"] = $respuesta["nombre"];
                             $_SESSION["usuario"] = $respuesta["usuario"];
+                            $_SESSION["perfil"] = $respuesta["perfil"];
                             $_SESSION["foto"] = $respuesta["foto"];
                             $_SESSION["estado"] = $respuesta["estado"];
                             $_SESSION["ultimo_login"] = $respuesta["ultimo_login"];
@@ -197,5 +198,16 @@ class ControladorUsuarios {
           
         }
  
+    }
+
+    // Mostrar Usuario
+    static public function ctrMostrarUsuarios($item, $valor) {
+
+        $tabla = "usuarios";
+
+        $resp = ModeloUsuarios::mdlMostarUsuarios($tabla, $item, $valor);
+        
+        return $resp;
+
     }
 }

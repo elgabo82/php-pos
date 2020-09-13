@@ -46,51 +46,45 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>1</td>
-                <td>Usuario 1</td>
-                <td>A</td>
-                <td>4</td>
-                <td><img src="vistas/img/usuarios/default/anonymous.png" class="img-thumbnail" width="40px"></td>
-                <td><button class="btn btn-success btn-xs">Activado</button></td>
-                <td>7</td>
-                <td>
-                  <div class="btn-group">
-                    <button class="btn btn-warning"><i class="fas fa-edit"></i></button>
-                    <button class="btn btn-danger"><i class="fa fa-times"></i></button>
-                  </div>
-                </td>
-              </tr>
-              <tr>              
-                <td>2</td>
-                <td>Usuario 2</td>
-                <td>B</td>
-                <td>4</td>
-                <td><img src="vistas/img/usuarios/default/anonymous.png" class="img-thumbnail" width="40px"></td>
-                <td><button class="btn btn-success btn-xs">Activado</button></td>
-                <td>7</td>
-                <td>
-                  <div class="btn-group">
-                    <button class="btn btn-warning"><i class="fas fa-edit"></i></button>
-                    <button class="btn btn-danger"><i class="fa fa-times"></i></button>
-                  </div>
-                </td>
-              </tr>
-              <tr>              
-                <td>3</td>
-                <td>Usuario 3</td>
-                <td>C</td>
-                <td>4</td>
-                <td><img src="vistas/img/usuarios/default/anonymous.png" class="img-thumbnail" width="40px"></td>
-                <td><button class="btn btn-success btn-xs">Activado</button></td>
-                <td>7</td>
-                <td>
-                  <div class="btn-group">
-                    <button class="btn btn-warning"><i class="fas fa-edit"></i></button>
-                    <button class="btn btn-danger"><i class="fa fa-times"></i></button>
-                  </div>
-                </td>
-              </tr>                                              
+              <?php
+                $item = null;
+                $valor = null;
+
+                $usuarios = ControladorUsuarios::ctrMostrarUsuarios($item, $valor);
+                //var_dump($usuarios);
+
+                foreach ($usuarios as $key => $value) {
+                  //var_dump($value["nombre"]);
+                  echo '
+                  <tr>
+                    <td>'.$value["id"].'</td>
+                    <td>'.$value["nombre"].'</td>
+                    <td>'.$value["usuario"].'</td>
+                    <td>'.$value["perfil"].'</td>';
+
+                    if ($value["foto"] != "") {
+                      echo '<td><img src='.$value["foto"].' class="img-thumbnail" width="40px"></td>';
+                    }
+                    else {
+                      echo '<td><img src="vistas/img/usuarios/default/anonymous.png" class="img-thumbnail" width="40px"></td>';
+                    }
+                    
+                  echo '
+                    <td><button class="btn btn-success btn-xs">Activado</button></td>
+                    <td>'.$value["ultimo_login"].'</td>
+                    <td>
+                      <div class="btn-group">
+                        <button class="btn btn-warning btnEditarUsuario" 
+                          idUsuario="'.$value["id"].'" data-toggle="modal" 
+                          data-target="#modalEditarUsuario">
+                        <i class="fas fa-edit"></i></button>
+                        <button class="btn btn-danger">
+                        <i class="fa fa-times"></i></button>
+                      </div>
+                    </td>
+                  </tr>';
+                }
+              ?>                                
             </tbody>            
           </table>                  
         </div>
@@ -101,8 +95,6 @@
     </section>
     <!-- /.content -->
   </div>
-
-
 
 <!-- Ventana Modal - Agregar usuarios -->
 <div class="modal fade" id="modalAgregarUsuario" role="dialog">
@@ -192,6 +184,114 @@
           $crearUsuario -> ctrCrearUsuario();
 
         ?>
+
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Ventana Modal - Editar usuarios -->
+<div class="modal fade" id="modalEditarUsuario" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form method="post" enctype="multipart/form-data">
+        <!-- Modal Header -->
+        <div class="modal-header" style="background: #3c8dbc; color: white;">
+          <h4 class="modal-title">Editar usuario</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+
+        <!-- Modal body -->
+        <div class="modal-body">
+          <div class="card-body">
+            <!--Nombre de usuario-->
+            <div class="form-group">
+              <div class="input-group">            
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fa fa-user"></i></span>
+                  <input type="text" class="form-control input-lg" value="" 
+                    name="editarNombre" id="editarNombre" required>
+                </div>                
+              </div>
+            </div>
+
+            <!--Usuario-->
+            <div class="form-group">
+              <div class="input-group">            
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fa fa-key"></i></span>
+                  <input type="text" class="form-control input-lg" value="" 
+                    name="editarUsuario" 
+                    autocomplete="username"
+                    id="editarUsuario" required>
+                </div>                
+              </div>
+            </div>
+
+            <!--Clave-->
+            <div class="form-group">
+              <div class="input-group">            
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fa fa-lock"></i></span>
+                  <input type="password" class="form-control input-lg" placeholder="Escriba la nueva clave" 
+                    autocomplete="current-password"
+                    name="editarClave" id="editarClave" required>
+                </div>                
+              </div>
+            </div>
+
+
+            <!--Repetir Clave-->
+            <!--<div class="form-group">
+              <div class="input-group">            
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fa fa-lock"></i></span>
+                  <input type="password" class="form-control input-lg" placeholder="Contraseña" 
+                    autocomplete="current-password"
+                    name="editarClave" id="editarClave" required>
+                </div>                
+              </div>
+            </div>-->
+            
+
+            <!-- Selección de perfil -->
+            <div class="form-group">
+              <div class="input-group">            
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fa fa-users"></i></span>
+                </div>
+                <select name="editarPerfil" class="form-control input-lg">
+                  <option value="" id="editarPerfil"></option>
+                  <option value="Administrador">Administrador</option>
+                  <option value="Usuario">Usuario</option>
+                  <option value="Invitado">Invitado</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Foto de perfil -->
+            <div class="form-group">
+              <div class="panel">Subir foto</div>
+              <input type="file" class="nuevaFoto" name="editarFoto" id="editarFoto">
+              <p class="help-block">Peso m&aacute;ximo 3MB</p>
+              <img src="vistas/img/usuarios/default/anonymous.png" 
+                class="img-thumbnail" id="previsualizar" name="previsualizar" width="100px">
+            </div>
+          </div>
+        </div>
+
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
+          <button type="submit" class="btn btn-primary swalDefaultWarning">Guardar cambios</button>
+        </div>
+      
+        <!--?php          
+
+          $crearUsuario = new ControladorUsuarios();
+          $crearUsuario -> ctrCrearUsuario();
+
+        ?-->
 
       </form>
     </div>

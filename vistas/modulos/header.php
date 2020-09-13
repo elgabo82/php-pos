@@ -32,10 +32,9 @@
               <div class="media-body">
                 <h3 class="dropdown-item-title">
                 <?php echo $_SESSION["nombre"]; ?>
-                  <!--<span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>-->
+                  <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
                 </h3>
-                <!--<p class="text-sm">Call me whenever you can...</p>-->
-                <?php echo '<p class="text-sm">'.$_SESSION["nombre"].'</p>'; ?>
+                <?php echo'<p class="text-sm">Perfil: '.$_SESSION["perfil"].'</p>'; ?>                
                 <?php echo '<p class="text-sm text-muted"><i class="far fa-clock mr-1"></i>'.$_SESSION["ultimo_login"].'</p>'; ?>
                 <!--<p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>-->
               </div>

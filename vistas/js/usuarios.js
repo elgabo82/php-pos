@@ -35,3 +35,38 @@ $("#nuevaFoto").change(function(){
                 })
             }
 })
+
+
+// Editar Usuario
+
+$(".btnEditarUsuario").click(function(){
+    var idUsuario = $(this).attr("idUsuario");
+    //console.log(`id - Usuario: ${idUsuario}`);
+    
+    // Se va a hacer uso de AJAX
+
+    var datos = new FormData();
+    // Variable POST
+    datos.append("idUsuario", idUsuario);
+
+    //console.log(datos);
+    $.ajax({
+        async: true,
+        url: 'ajax/usuarios.ajax.php',
+        method: 'POST',
+        data: datos,
+        cache: false,
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: function (respuesta){
+            //console.log(respuesta);
+            $("#editarNombre").val(respuesta["nombre"]);
+            $("#editarUsuario").val(respuesta["usuario"]);
+            $("#editarPerfil").html(respuesta["perfil"]);
+        },
+        error: function (respuesta){
+            console.log(respuesta);
+        }
+    });
+})
