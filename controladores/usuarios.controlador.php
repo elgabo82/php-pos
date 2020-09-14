@@ -4,7 +4,6 @@ class ControladorUsuarios {
     public static function ctrIngresoUsuario(){
 
         if (isset($_POST["idUsuario"])){
-
             if (preg_match('/^[a-zA-Z0-9@.]+$/', $_POST["idUsuario"]) &&
                 preg_match('/^[a-zA-Z0-9@!¡.]+$/', $_POST["passUsuario"])){
 
@@ -17,26 +16,48 @@ class ControladorUsuarios {
                     //var_dump($clave);
 
                     $respuesta = ModeloUsuarios::mdlMostarUsuarios($tabla, $item, $valor);
-
                     //var_dump($respuesta);
 
                     if ($respuesta["usuario"] == $_POST["idUsuario"] &&
                         $respuesta["password"] == sha1($_POST["passUsuario"])) {
-                            //echo '<br><div class="alert alert-success">Bienvenido al sistema</div>';
-                            $_SESSION["sesionIniciada"] = "ok";
-                            $_SESSION["id"] = $respuesta["id"];
-                            $_SESSION["nombre"] = $respuesta["nombre"];
-                            $_SESSION["usuario"] = $respuesta["usuario"];
-                            $_SESSION["perfil"] = $respuesta["perfil"];
-                            $_SESSION["foto"] = $respuesta["foto"];
-                            $_SESSION["estado"] = $respuesta["estado"];
-                            $_SESSION["ultimo_login"] = $respuesta["ultimo_login"];
-                            $_SESSION["fecha"] = $respuesta["fecha"];
 
-                            echo '<script>
-                                window.location = "inicio";
-                            </script>';
-                        }
+                            // Se pregunta el estado
+                            if ($respuesta["estado"] == 1 ){
+
+                                //echo '<br><div class="alert alert-success">Bienvenido al sistema</div>';
+                                $_SESSION["sesionIniciada"] = "ok";
+                                $_SESSION["id"] = $respuesta["id"];
+                                $_SESSION["nombre"] = $respuesta["nombre"];
+                                $_SESSION["usuario"] = $respuesta["usuario"];
+                                $_SESSION["perfil"] = $respuesta["perfil"];
+                                $_SESSION["foto"] = $respuesta["foto"];
+                                $_SESSION["estado"] = $respuesta["estado"];
+                                $_SESSION["ultimo_login"] = $respuesta["ultimo_login"];
+                                $_SESSION["fecha"] = $respuesta["fecha"];
+
+                                echo '<script>
+                                    window.location = "inicio";
+                                </script>';
+                            } 
+                            else {
+                                echo '<script>
+                    
+                                Swal.fire({
+                                    icon: "error",
+                                    title: "Usuario no activado",
+                                    text: "El usuario no ha sido activado todavía.",
+                                    showConfirmButton: true,
+                                    confirmButtonText: "Cerrar",
+                                    
+                                }).then((result) => {
+                                    if (result) {
+                                        window.location = "login";
+                                        }
+                                    }); 
+                                
+                                </script>';
+                            }
+                        }                       
                     else {
                         //echo '<br><div class="alert alert-danger">Error al ingresar, vuelve a intentar.</div>';
                         //Añadida 11-09-2020 20:18
@@ -139,7 +160,6 @@ class ControladorUsuarios {
                             imagejpeg($destino, $ruta);
                         }
 
-
                     }
 
                     $tabla = "usuarios";
@@ -208,6 +228,143 @@ class ControladorUsuarios {
         $resp = ModeloUsuarios::mdlMostarUsuarios($tabla, $item, $valor);
         
         return $resp;
+    }
 
+    // Editar Usuario
+    public static  function ctrEditarUsuario() {
+        if (isset($_POST["editarUsuario"])){
+            if(preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["editarNombre"])) {
+
+                $ruta = $_POST["fotoActual"];
+                
+                if (isset($_FILES["editarFoto"]["tmp_name"]) &&
+                    !empty($_FILES["editarFoto"]["tmp_name"])) {
+                list($ancho, $alto) = getimagesize($_FILES["editarFoto"]["tmp_name"]);
+
+                    $nuevoAncho = 500;
+                    $nuevoAlto = 500;
+
+                    // Crear el directorio
+                    $directorio = 'vistas/img/usuarios/'.$_POST["editarUsuario"];
+
+                    // Preguntar si ya existe en la BD
+
+                    if (!empty($_POST["fotoActual"])) {
+                        unlink($_POST["fotoActual"]);
+                    } else {
+                        // El directorio actual debe tener permisos para el usuario Apache
+                        //$pwd = getwd();
+                        mkdir($directorio, 0755, true);
+                    }
+                                        
+                    //var_dump($_FILES["editarFoto"]["tmp_name"]);
+
+                    if ($_FILES['editarFoto']['type'] == "image/jpg" ||
+                    $_FILES['editarFoto']['type'] == "image/jpeg") {
+
+                        $aleatorio = mt_rand(100, 999);
+
+                        $ruta = "vistas/img/usuarios/".$_POST['editarUsuario']."/".$aleatorio.".jpg";
+
+                        $origen = imagecreatefromjpeg($_FILES['editarFoto']['tmp_name']);
+                        $destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
+                        imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
+
+                        imagejpeg($destino, $ruta);
+                    }
+
+                    if ($_FILES['editarFoto']['type'] == "image/png") {
+
+                        $aleatorio = mt_rand(100, 999);
+
+                        $ruta = "vistas/img/usuarios/".$_POST['editarUsuario']."/".$aleatorio.".png";
+
+                        $origen = imagecreatefromjpeg($_FILES['editarFoto']['tmp_name']);
+                        $destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
+                        imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
+
+                        imagejpeg($destino, $ruta);
+                    }
+
+
+                }
+
+                $tabla = "usuarios";
+                
+                if ($_POST["editarClave"] != "") {
+                    if(preg_match('/^[a-zA-Z0-9!¡#@.-_]+$/', $_POST["editarClave"])){
+                        $clavesha = sha1($_POST["editarClave"]);
+                    }
+                    else {
+                        echo '<script>
+                
+                        Swal.fire({
+                            icon: "error",
+                            title: "¡Uy!, Algo sali&oacute; mal",
+                            text: "La clave no puede estar vacía o contener caracteres especiales.",
+                            showConfirmButton: true,
+                            confirmButtonText: "Cerrar",
+                            
+                        }).then((result) => {
+                            if (result) {
+                                window.location = "usuarios";
+                                }
+                            }); 
+                        
+                        </script>';
+                    }              
+
+                }
+                else {
+                    $clavesha = $claveActual;
+                }
+
+                $datos = array(
+                    "nombre" => $_POST["editarNombre"],
+                    "usuario" => $_POST["editarUsuario"],
+                    "password" => $clavesha,
+                    "perfil" => $_POST["editarPerfil"],
+                    "foto" => $ruta
+                );
+
+                $respuesta = ModeloUsuarios::mdlEditarUsuario($tabla, $datos);
+
+                if ($respuesta == "ok") {
+                    echo '<script>                    
+                        Swal.fire({
+                            icon: "success",
+                            title: "Tarea exitosa",
+                            text: "El usuario ha sido modificado correctamente.",
+                            showConfirmButton: true,
+                            confirmButtonText: "Cerrar",
+                            
+                        }).then((result) => {
+                            if (result) {
+                                window.location = "usuarios";
+                                }
+                            }); 
+                        
+                        </script>';
+                }
+
+            }
+            else {
+                echo '<script>                    
+                        Swal.fire({
+                            icon: "error",
+                            title: "¡Uy! Algo salió mal",
+                            text: "El nombre no puede estar vacío o llevar caracteres especiales.",
+                            showConfirmButton: true,
+                            confirmButtonText: "Cerrar",
+                            
+                        }).then((result) => {
+                            if (result) {
+                                window.location = "usuarios";
+                                }
+                            }); 
+                        
+                        </script>';
+            }
+        }
     }
 }

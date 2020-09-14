@@ -63,14 +63,30 @@
                     <td>'.$value["perfil"].'</td>';
 
                     if ($value["foto"] != "") {
-                      echo '<td><img src='.$value["foto"].' class="img-thumbnail" width="40px"></td>';
+                      echo '<td><img src='.$value["foto"].' 
+                        class="img-thumbnail" width="40px"></td>';
                     }
                     else {
-                      echo '<td><img src="vistas/img/usuarios/default/anonymous.png" class="img-thumbnail" width="40px"></td>';
+                      echo '<td><img src="vistas/img/usuarios/default/anonymous.png" 
+                        class="img-thumbnail" width="40px"></td>';
                     }
-                    
-                  echo '
-                    <td><button class="btn btn-success btn-xs">Activado</button></td>
+                  
+                    if ($value["estado"] !=0) {
+                      echo '<td>
+                      <button class="btn btn-success 
+                        btn-xs btnActivar" idUsuarioEstado="'.$value["id"].'" 
+                        estadoUsuario="0">Activado
+                      </button></td>';
+                    }
+                    else {
+                      echo '<td>
+                      <button class="btn btn-danger
+                        btn-xs btnActivar" idUsuarioEstado="'.$value["id"].'" 
+                        estadoUsuario="1">Desactivado
+                      </button></td>';
+                    }                                      
+
+                  echo'
                     <td>'.$value["ultimo_login"].'</td>
                     <td>
                       <div class="btn-group">
@@ -167,7 +183,8 @@
               <input type="file" class="nuevaFoto" name="nuevaFoto" id="nuevaFoto">
               <p class="help-block">Peso m&aacute;ximo 3MB</p>
               <img src="vistas/img/usuarios/default/anonymous.png" 
-                class="img-thumbnail" id="previsualizar" name="previsualizar" width="100px">
+                class="img-thumbnail previsualizar" id="previsualizar" 
+                name="previsualizar" width="100px">
             </div>
           </div>
         </div>
@@ -223,7 +240,7 @@
                   <input type="text" class="form-control input-lg" value="" 
                     name="editarUsuario" 
                     autocomplete="username"
-                    id="editarUsuario" required>
+                    id="editarUsuario" readonly>
                 </div>                
               </div>
             </div>
@@ -235,7 +252,8 @@
                   <span class="input-group-text"><i class="fa fa-lock"></i></span>
                   <input type="password" class="form-control input-lg" placeholder="Escriba la nueva clave" 
                     autocomplete="current-password"
-                    name="editarClave" id="editarClave" required>
+                    name="editarClave" id="editarClave">
+                  <input type="hidden" id="claveActual" name="claveActual">
                 </div>                
               </div>
             </div>
@@ -272,10 +290,12 @@
             <!-- Foto de perfil -->
             <div class="form-group">
               <div class="panel">Subir foto</div>
-              <input type="file" class="nuevaFoto" name="editarFoto" id="editarFoto">
+              <input type="file" class="editarFoto" name="editarFoto" id="editarFoto">
               <p class="help-block">Peso m&aacute;ximo 3MB</p>
               <img src="vistas/img/usuarios/default/anonymous.png" 
-                class="img-thumbnail" id="previsualizar" name="previsualizar" width="100px">
+                class="img-thumbnail previsualizarEditada" id="previsualizarEditada" 
+                name="previsualizarEditada" width="100px">
+              <input type="hidden" name="fotoActual" id="fotoActual">
             </div>
           </div>
         </div>
@@ -286,12 +306,12 @@
           <button type="submit" class="btn btn-primary swalDefaultWarning">Guardar cambios</button>
         </div>
       
-        <!--?php          
+        <?php          
 
           $crearUsuario = new ControladorUsuarios();
-          $crearUsuario -> ctrCrearUsuario();
+          $crearUsuario -> ctrEditarUsuario();
 
-        ?-->
+        ?>
 
       </form>
     </div>
