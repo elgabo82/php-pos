@@ -35,9 +35,61 @@ class ControladorUsuarios {
                                 $_SESSION["ultimo_login"] = $respuesta["ultimo_login"];
                                 $_SESSION["fecha"] = $respuesta["fecha"];
 
-                                echo '<script>
-                                    window.location = "inicio";
-                                </script>';
+
+                                // Zona horaria
+                                //date_default_timezone_set('America/Guayaquil');
+                                
+
+                                $formatoFecha = date('Y-m-d');
+                                $formatoHora = date('H:i:s');
+                                $fechaActual = $formatoFecha.' '.$formatoHora;
+
+                                $fecha = new DateTime();
+                                $zona = $fecha->getTimezone();
+                                $zona->getName();
+                                date_default_timezone_set($zona->getName());
+
+                                $item1 = "ultimo_login";
+                                $valor1 = $fechaActual;
+                                $item2 = "id";
+                                $valor2 = $respuesta["id"];
+                                $tabla = "usuarios";
+
+                                $ultimoLogin = ModeloUsuarios::mdlActualizarUsuario($tabla, 
+                                    $item1, $valor1, $item2, $valor2);
+
+                                if ($ultimoLogin == "ok") {
+                                    echo '
+                                        <script> 
+                                            window.location = "inicio"; 
+                                        </script>';  
+                                }
+
+
+
+                                /*if (strcmp($timeZone, ini_get('date.timezone'))) {
+                                    echo '<script>                    
+                                            Swal.fire({
+                                                icon: "error",
+                                                title: "Problemas con la Zona Horaria",
+                                                text: "La zona horaria no está configurada correctamente.",
+                                                showConfirmButton: true,
+                                                confirmButtonText: "Cerrar",
+                                                
+                                            }).then((result) => {
+                                                if (result) {
+                                                    window.location = "login";
+                                                    }
+                                                }); 
+                                            
+                                            </script>';
+
+                                } else {
+                                    echo '<script>
+                                            window.location = "inicio";
+                                        </script>';
+                                }*/
+                                
                             } 
                             else {
                                 echo '<script>
