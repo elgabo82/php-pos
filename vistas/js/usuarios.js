@@ -1,5 +1,4 @@
 // Gestión de usuarios
-
 $("#nuevaFoto").change(function(){
     
     var imagen = this.files[0];    
@@ -37,7 +36,7 @@ $("#nuevaFoto").change(function(){
             }
 })
 
-
+// Editar foto
 $("#editarFoto").change(function(){
     
     var imagen = this.files[0];    
@@ -75,10 +74,8 @@ $("#editarFoto").change(function(){
             }
 })
 
-
 // Editar Usuario
-
-$(".btnEditarUsuario").click(function(){
+$(document).on("click", ".btnEditarUsuario", function(){
     var idUsuario = $(this).attr("idUsuario");
     //console.log(`id - Usuario: ${idUsuario}`);
     
@@ -119,10 +116,8 @@ $(".btnEditarUsuario").click(function(){
     });
 })
 
-
 // Activación del usuario
-
-$(".btnActivar").click(function(){
+$(document).on("click", ".btnActivar", function(){
     var idUsuario = $(this).attr("idUsuarioEstado");
     
     var estadoUsuario = $(this).attr("estadoUsuario");
@@ -143,6 +138,20 @@ $(".btnActivar").click(function(){
         processData: false,        
         success: function (respuesta){
             //console.log(respuesta);
+            if(window.matchMedia("(max-width: 767px").matches){
+                Swal.fire({
+                    type: "success",
+                    title: "Usuario actualizado",
+                    text: "¡El usuario ha sido actualizado!",
+                    icon: "success",
+                    confirmButton: "Cerrar"
+                }).then(function(result){
+                    if (result.value) {
+                        window.location = "usuarios";
+                    }
+                });
+
+            }
         },
         error: function (respuesta){
             console.log(respuesta);
@@ -162,4 +171,60 @@ $(".btnActivar").click(function(){
         $(this).attr('estadoUsuario', 0);        
     }
 
+})
+
+// Validación de usuarios (evitar duplicados)
+$("#nuevoUsuario").change(function(){
+
+    $(".alert").remove();
+
+    var usuario = $(this).val();
+
+    var datos = new FormData();
+
+    datos.append("validarUsuario", usuario);
+
+    $.ajax({
+        async: true,
+        url: 'ajax/usuarios.ajax.php',
+        method: 'POST',
+        data: datos,
+        cache: false,
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: function (respuesta){
+            //console.log("respuesta", respuesta);
+            if (respuesta) {
+                $("#nuevoUsuario").parent().after('<div class="alert alert-warning">Este usuario no est&aacute; disponible</div>');
+                $("#nuevoUsuario").val("");
+            }
+        }
+    })
+})
+
+// Eliminación de usuarios
+$(document).on("click", ".btnEliminarUsuario",function(){
+
+    var idUsuario = $(this).attr("idUsuario");
+    var fotoUsuario = $(this).attr("fotoUsuario");
+    var usuario = $(this).attr("usuario");
+
+
+    Swal.fire({
+        type: "warning",
+        title: "¡Cuidado!",
+        text: "¿Está seguro de querer borrar el usuario?",
+        icon: "error",
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        cancelButtonText: 'Cancelar',
+        confirmButtonText: 'Sí, borrar usuario.'
+    }).then((result)=>{
+        if(result.value) {
+            window.location = `index.php?ruta=usuarios&idUsuario=${idUsuario}&usuario=${usuario}&fotoUsuario=${fotoUsuario}`;
+        }
+    });
+    
 })

@@ -94,7 +94,9 @@
                           idUsuario="'.$value["id"].'" data-toggle="modal" 
                           data-target="#modalEditarUsuario">
                         <i class="fas fa-edit"></i></button>
-                        <button class="btn btn-danger">
+                        <button class="btn btn-danger 
+                          btnEliminarUsuario" idUsuario="'.$value["id"].'" fotoUsuario="'.$value["foto"].'"
+                          usuario="'.$value["usuario"].'">
                         <i class="fa fa-times"></i></button>
                       </div>
                     </td>
@@ -317,3 +319,11 @@
     </div>
   </div>
 </div>
+
+
+<?php
+
+  $borrarUsuario = new ControladorUsuarios();
+  $borrarUsuario->ctrBorrarUsuario();
+
+?>

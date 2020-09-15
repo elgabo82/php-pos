@@ -1,8 +1,7 @@
 <?php
-
-ini_set('display_errors', 1);
+/*ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+error_reporting(E_ALL);*/
 
 require_once "../controladores/usuarios.controlador.php";
 require_once "../modelos/usuarios.modelo.php";
@@ -38,8 +37,20 @@ class AjaxUsuarios {
 
         $respuesta = ModeloUsuarios::mdlActualizarUsuario($tabla, $item1, $valor1, $item2, $valor2);
     }
-}
 
+    public $validarUsuario;
+
+    // Validar usuarios para evitar duplicados
+    public function ajaxValidarUsuario(){
+
+        $item = "usuario";
+        $valor = $this->validarUsuario;
+
+        $respuesta = ControladorUsuarios::ctrMostrarUsuarios($item, $valor);
+
+        echo json_encode($respuesta);
+    }
+}
 
 // Editar usuario
 if(isset($_POST["idUsuario"])){    
@@ -49,15 +60,22 @@ if(isset($_POST["idUsuario"])){
     $editar->ajaxEditarUsuario();
 }
 
-
 // Activar usuario
 if(isset($_POST["activarUsuario"])){    
 
     $activarUsuario = new AjaxUsuarios();
 
-    $activarUsuario -> activarUsuario = $_POST["activarUsuario"];
-    $activarUsuario -> activarId = $_POST["activarId"];
+    $activarUsuario->activarUsuario = $_POST["activarUsuario"];
+    $activarUsuario->activarId = $_POST["activarId"];
 
     $activarUsuario -> ajaxActivarUsuario();
 
+}
+
+// Validar usuarios para evitar duplicados
+if (isset($_POST["validarUsuario"])){
+
+    $valUsuario = new AjaxUsuarios();
+    $valUsuario->validarUsuario = $_POST["validarUsuario"];
+    $valUsuario->ajaxValidarUsuario();
 }
