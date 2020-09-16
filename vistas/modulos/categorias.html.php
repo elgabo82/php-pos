@@ -35,27 +35,42 @@
           <table id="tabla" class="table table-bordered dt-responsive table-striped tabla">
             <thead>
               <tr>
-                <th style="width: 10px">#</th>
-                <th>Categor&iacute;a</th>
+                <th>#ID</th>
+                <th>Nombre Categor&iacute;a</th>
                 <th>Acciones</th>
               </tr>
             </thead>
-            <tbody>                  
-                <tr>
-                  <td>1</td>
-                  <td>Equipos</td>
-                  <td>
-                    <div class="btn-group">
-                      <button class="btn btn-warning" 
-                        data-toggle="modal" 
-                        data-target="#modalEditarUsuario">
-                      <i class="fas fa-edit"></i></button>
-                      <button class="btn btn-danger 
-                        btnEliminarUsuario">
-                      <i class="fa fa-times"></i></button>
-                    </div>
-                  </td>
-                </tr>                
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Equipos el&eacute;ctricos</td>                   
+                <td>
+                  <div class="btn-group">
+                    <button class="btn btn-warning"><i class="fas fa-edit"></i></button>
+                    <button class="btn btn-danger"><i class="fa fa-times"></i></button>
+                  </div>
+                </td>
+              </tr>
+              <tr>              
+                <td>2</td>
+                <td>Materiales de construcci&oacute;n</td>
+                <td>
+                  <div class="btn-group">
+                    <button class="btn btn-warning"><i class="fas fa-edit"></i></button>
+                    <button class="btn btn-danger"><i class="fa fa-times"></i></button>
+                  </div>
+                </td>
+              </tr>
+              <tr>              
+                <td>3</td>
+                <td>Otros</td>
+                <td>
+                  <div class="btn-group">
+                    <button class="btn btn-warning"><i class="fas fa-edit"></i></button>
+                    <button class="btn btn-danger"><i class="fa fa-times"></i></button>
+                  </div>
+                </td>
+              </tr>                                              
             </tbody>            
           </table>                  
         </div>
@@ -67,11 +82,13 @@
     <!-- /.content -->
   </div>
 
-<!-- Ventana Modal - Agregar categorías -->
+
+
+<!-- Ventana Modal - Agregar usuarios -->
 <div class="modal fade" id="modalAgregarCategoria" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
-      <form method="post" >
+      <form method="post" role="form">
         <!-- Modal Header -->
         <div class="modal-header" style="background: #3c8dbc; color: white;">
           <h4 class="modal-title">Agregar categor&iacute;a</h4>
@@ -81,32 +98,24 @@
         <!-- Modal body -->
         <div class="modal-body">
           <div class="card-body">
-            <!--Nombre de categoría-->
+            <!--Nombre de usuario-->
             <div class="form-group">
               <div class="input-group">            
                 <div class="input-group-prepend">
-                  <span class="input-group-text"><i class="fas fa-th"></i></span>
-                  <input type="text" class="form-control input-lg" placeholder="Nombre de categor&iacute;a" 
-                    name="nuevaCategoria" id="nuevaCategoria" required>
-                </div>                
+                  <span class="input-group-text"><i class="fa fa-th"></i></span>
+                </div>
+                <input type="text" class="form-control input-lg" placeholder="Nueva categor&iacute;a" 
+                  name="nuevaCategoria" required>
               </div>
             </div>
-          </div>
+          </div> 
         </div>
 
         <!-- Modal footer -->
         <div class="modal-footer">
-          <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
-          <button type="submit" class="btn btn-primary swalDefaultWarning">Guardar</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Salir</button>
+          <button type="submit" class="btn btn-primary" data-dismiss="modal">Guardar</button>
         </div>
-      
-        <?php          
-
-          $crearCategoria = new ControladorCategorias();
-          $crearCategoria -> ctrCrearCategoria();
-
-        ?>
-
       </form>
     </div>
   </div>
