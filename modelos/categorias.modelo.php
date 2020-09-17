@@ -12,7 +12,74 @@ class ModeloCategorias{
 
         $stmt->bindParam(":categoria", $datos, PDO::PARAM_STR);
         
-        var_dump($stmt);
+        //var_dump($stmt);
+
+        if ($stmt->execute()){
+            return "ok";            
+        }
+        else {
+            return "Error";
+        }
+
+        $stmt = null;
+
+ 
+    }  
+
+    // Mostrar Categoría
+    static public function mdlMostrarCategorias($tabla, $item, $valor){
+
+        if ($item != null) {
+
+            $stmt = Conexion::conectar()->prepare("SELECT * from $tabla WHERE $item = :$item");
+
+            $stmt->bindParam(":".$item, $valor, PDO::PARAM_STR);
+            $stmt->execute();
+
+            return $stmt->fetch();
+
+        }
+        else {
+            $stmt = Conexion::conectar()->prepare("SELECT * from $tabla");
+            $stmt->execute();
+
+            return $stmt->fetchAll();
+        }
+
+        $stmt = null;
+    }
+
+    // Editar Categoría
+    static public function mdlEditarCategoria($tabla, $datos){
+
+        $stmt = Conexion::conectar()->prepare("UPDATE $tabla SET categoria = :categoria WHERE id = :id");
+
+        $stmt->bindParam(":categoria", $datos["categoria"], PDO::PARAM_STR);
+        $stmt->bindParam(":id", $datos["id"], PDO::PARAM_INT);
+        
+        //var_dump($stmt);
+
+        if ($stmt->execute()){
+            return "ok";            
+        }
+        else {
+            return "Error";
+        }
+
+        $stmt = null;
+
+ 
+    }
+
+    // Borrar Categoría
+
+    static public function mdlBorrarCategoria($tabla, $datos){
+    
+        $stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE id = :id");
+        
+        $stmt->bindParam(":id", $datos, PDO::PARAM_INT);
+        
+        //var_dump($stmt);
 
         if ($stmt->execute()){
             return "ok";            
@@ -25,29 +92,6 @@ class ModeloCategorias{
 
     }
 
-    // Mostrar Categorías
-
-    public static function mdlMostarCategorias($tabla, $item, $valor){
-
-        echo '<script>console.log("'.$item.'")</script>';
-
-        if ($item != null) {
-            $stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE $item = :$item");
-            $stmt->bindParam(":".$item, $valor, PDO::PARAM_STR);
-            $stmt->execute();           
-            
-            return $stmt->fetch();
-        }
-        else {
-            $stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla");            
-            $stmt->execute();
-            
-            return $stmt->fetchAll();
-        }      
-        
-        $stmt -> close();
-        $stmt = null;
-    }
 }
 
 ?>
