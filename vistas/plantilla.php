@@ -11,6 +11,7 @@
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  <!-- Sección de estilos - CSS -->
   <link rel="icon" href="vistas/img/favicon.ico"> <!-- Icono -->
   <link rel="stylesheet" href="vistas/dist/css/adminlte.css">
 
@@ -28,7 +29,9 @@
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
   <!-- DataTables -->
   <link rel="stylesheet" href="vistas/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-  <link rel="stylesheet" href="vistas/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">  
+  <link rel="stylesheet" href="vistas/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+  <!-- iCheck for checkboxes and radio inputs -->
+  <link rel="stylesheet" href="vistas/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
     
   <!-- jQuery -->
   <script src="vistas/plugins/jquery/jquery.min.js"></script>
