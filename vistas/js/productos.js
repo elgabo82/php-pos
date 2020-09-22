@@ -151,3 +151,80 @@ $(".porcentaje").on("ifChanged", function(){
     console.log($(".nuevaDescripcion").val());
     $(".nuevaDescripcion").val($(".nuevaDescripcion"));
 })*/
+
+
+// Subiendo imagen del producto
+$("#nuevaImagen").change(function(){
+    
+    var imagen = this.files[0];    
+
+    if (imagen["type"] != "image/jpeg" &&
+        imagen["type"] != "image/jpg" &&
+        imagen["type"] != "image/png") {
+
+            $("#nuevaImagen").val("");
+            Swal.fire({                
+                title: "Error al subir la imagen",
+                text: "¡La imagen debe estar en formato JPG o PNG!",
+                icon: "error",
+                confirmButtonText: "Cerrar"
+            });
+
+    } else if (imagen["size"] > 3000000) {
+                $("#nuevaImagen").val("");
+                Swal.fire({
+                    type: "error",
+                    title: "Error al subir la imagen",
+                    text: "¡La imagen debe ser máximo de 3MB!",
+                    icon: "error",
+                    confirmButton: "Cerrar"
+                });
+            }
+            else {
+                var datosImagen = new FileReader;
+                datosImagen.readAsDataURL(imagen);                
+                
+                $(datosImagen).on("load", function(event){                    
+                    var rutaImagen = event.target.result;                    
+                    $("#previsualizar").attr("src", rutaImagen);
+                })
+            }
+})
+
+// Editar foto
+$("#editarFoto").change(function(){
+    
+    var imagen = this.files[0];    
+
+    if (imagen["type"] != "image/jpeg" &&
+        imagen["type"] != "image/jpg" &&
+        imagen["type"] != "image/png") {
+
+            $("#editarFoto").val("");
+            Swal.fire({                
+                title: "Error al subir la imagen",
+                text: "¡La imagen debe estar en formato JPG o PNG!",
+                icon: "error",
+                confirmButtonText: "Cerrar"
+            });
+
+    } else if (imagen["size"] > 3000000) {
+                $("#editarFoto").val("");
+                Swal.fire({
+                    type: "error",
+                    title: "Error al subir la imagen",
+                    text: "¡La imagen debe ser máximo de 3MB!",
+                    icon: "error",
+                    confirmButton: "Cerrar"
+                });
+            }
+            else {
+                var datosImagen = new FileReader;
+                datosImagen.readAsDataURL(imagen);                
+                
+                $(datosImagen).on("load", function(event){                    
+                    var rutaImagen = event.target.result;                    
+                    $("#previsualizarEditada").attr("src", rutaImagen);
+                })
+            }
+})

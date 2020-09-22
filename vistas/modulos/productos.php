@@ -135,26 +135,26 @@
             
             <!--Precio de compra-->
             <div class="form-group row mb-2">
-              <div class="col-sm-6">
-                <div class="input-group">            
+              <div class="col-xs-12 col-sm-6">
+                <div class="input-group">
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fa fa-arrow-up"></i></span>
                   </div>
                   <input type="number" class="form-control input-lg nuevoPrecioCompra" 
                     id="nuevoPrecioCompra" 
-                    min="0" placeholder="Precio de compra" 
+                    min="0" step="any" placeholder="Precio de compra" 
                     name="nuevoPrecioCompra" required>
-                </div>            
+                </div>
               </div>
 
               <!--Precio de venta-->
-              <div class="col-sm-6">            
-                <div class="input-group">            
+              <div class="col-xs-12 col-sm-6">
+                <div class="input-group">       
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fa fa-arrow-down"></i></span>
                   </div>
                   <input type="number" class="form-control input-lg nuevoPrecioVenta" 
-                    min="0" placeholder="Precio de venta"
+                    min="0" step="any" placeholder="Precio de venta"
                     id="nuevoPrecioVenta"
                     name="nuevoPrecioVenta" required>
                 </div>
@@ -164,7 +164,7 @@
             </div>
             
             <div class="row">
-                  <div class="col-sm-6">
+                  <div class="col-xs-12 col-sm-6">
                     <!-- checkbox -->
                     <div class="form-group clearfix">
                       <div class="icheck-primary d-inline">
@@ -176,7 +176,7 @@
                       </div>
                     </div>
                   </div>
-                  <div class="col-sm-6">
+                  <div class="col-xs-12 col-sm-6">
                     <!-- Porcentaje -->
                     <div class="input-group">         
                       <div class="input-group-prepend">                                                                
@@ -192,11 +192,12 @@
             <!-- Foto del producto -->
             <div class="form-group">
               <div class="panel">Subir imagen</div>
-              <input type="file" id="nuevaImagen" name="nuevaImagen">
+              <input type="file" class="nuevaImagen" id="nuevaImagen" name="nuevaImagen">
               <p class="help-block">
                 Peso m&aacute;ximo 2MB
               </p>
-              <img src="vistas/img/productos/default/anonymous.png" class="img-thumbnail" width="100px">
+              <img src="vistas/img/productos/default/anonymous.png" class="img-thumbnail previsualizar"
+                id="previsualizar" name="previsualizar" width="100px">
             </div>
           </div>
         </div>

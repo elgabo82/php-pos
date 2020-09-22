@@ -23,11 +23,57 @@ class ControladorProductos{
 
             if(preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevaDescripcion"]) && 
                 preg_match('/^[0-9]+$/', $_POST["nuevoStock"]) &&
-                preg_match('/^[0-9]+$/', $_POST["nuevoPrecioCompra"]) && 
-                preg_match('/^[0-9]+$/', $_POST["nuevoPrecioVenta"])){
+                preg_match('/^[0-9.]+$/', $_POST["nuevoPrecioCompra"]) && 
+                preg_match('/^[0-9.]+$/', $_POST["nuevoPrecioVenta"])){
+
+                    $ruta = "vistas/img/productos/default/anonymous.png";
+
+                    if (isset($_FILES["nuevaImagen"]["tmp_name"])) {
+
+                        list($ancho, $alto) = getimagesize($_FILES["nuevaImagen"]["tmp_name"]);
+
+                        $nuevoAncho = 500;
+                        $nuevoAlto = 500;
+
+                        // Crear el directorio
+                        $directorio = 'vistas/img/productos/'.$_POST["nuevoCodigo"];
+                        
+                        // El directorio actual debe tener permisos para el usuario Apache
+                        //$pwd = getwd();
+                        mkdir($directorio, 0755, true);
+                        //var_dump($_FILES["nuevaImagen"]["tmp_name"]);
+
+                        if ($_FILES['nuevaImagen']['type'] == "image/jpg" ||
+                        $_FILES['nuevaImagen']['type'] == "image/jpeg") {
+
+                            $aleatorio = mt_rand(100, 999);
+
+                            $ruta = "vistas/img/productos/".$_POST['nuevoCodigo']."/".$aleatorio.".jpg";
+
+                            $origen = imagecreatefromjpeg($_FILES['nuevaImagen']['tmp_name']);
+                            $destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
+                            imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
+
+                            imagejpeg($destino, $ruta);
+                        }
+
+                        if ($_FILES['nuevaImagen']['type'] == "image/png") {
+
+                            $aleatorio = mt_rand(100, 999);
+
+                            $ruta = "vistas/img/productos/".$_POST['nuevoCodigo']."/".$aleatorio.".png";
+
+                            $origen = imagecreatefromjpeg($_FILES['nuevaImagen']['tmp_name']);
+                            $destino = imagecreatetruecolor($nuevoAncho, $nuevoAlto);
+                            imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoAncho, $nuevoAlto, $ancho, $alto);
+
+                            imagejpeg($destino, $ruta);
+                        }
+
+                    }
 
                 $tabla = "productos";
-                $ruta = "vistas/img/productos/default/anonymous.png";
+                //$ruta = "vistas/img/productos/default/anonymous.png";
 
                 $datos = array(
                     "id_categoria"=>$_POST["nuevaCategoria"],
