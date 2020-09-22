@@ -32,7 +32,7 @@
 
         <div class="card-body">
         
-          <table id="tablaProductos" class="table table-bordered dt-responsive table-striped tablaProductos" width="100%">
+          <table id="tabla" class="table table-bordered dt-responsive table-striped tabla">
             <thead>
               <tr>
                 <th>#</th>
@@ -47,7 +47,42 @@
                 <th>Acciones</th>
               </tr>
             </thead>
-    
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td><img src="vistas/img/productos/default/anonymous.png" class="img-thumbnail" width="40px"></td>
+                <td>A1</td>
+                <td>Producto 1</td>
+                <td>Cat. 1</td>
+                <td>55</td>                
+                <td>$1,50</td>
+                <td>$2,25</td>
+                <td>2020-09-17 17:54:14</td>
+                <td>
+                  <div class="btn-group">
+                    <button class="btn btn-warning"><i class="fas fa-edit"></i></button>
+                    <button class="btn btn-danger"><i class="fa fa-times"></i></button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td><img src="vistas/img/productos/default/anonymous.png" class="img-thumbnail" width="40px"></td>
+                <td>A2</td>
+                <td>Producto 2</td>
+                <td>Cat. 1</td>
+                <td>105</td>                
+                <td>$4,50</td>
+                <td>$5,25</td>
+                <td>2020-09-17 17:55:20</td>                
+                <td>
+                  <div class="btn-group">
+                    <button class="btn btn-warning"><i class="fas fa-edit"></i></button>
+                    <button class="btn btn-danger"><i class="fa fa-times"></i></button>
+                  </div>
+                </td>
+              </tr>                                              
+            </tbody>            
           </table>                  
         </div>
         <!-- /.card-body -->

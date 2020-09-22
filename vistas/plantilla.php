@@ -12,6 +12,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- Sección de estilos - CSS -->
+  <link rel="stylesheet" href="css/estilos.css">
   <link rel="icon" href="vistas/img/favicon.ico"> <!-- Icono -->
   <link rel="stylesheet" href="vistas/dist/css/adminlte.css">
 
@@ -111,5 +112,6 @@ if (isset($_SESSION["sesionIniciada"]) && $_SESSION["sesionIniciada"] == "ok"){
 ?>
 <script src="vistas/js/usuarios.js"></script>
 <script src="vistas/js/categorias.js"></script>
+<script src="vistas/js/productos.js"></script>
 </body>
 </html>
