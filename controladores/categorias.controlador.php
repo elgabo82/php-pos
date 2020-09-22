@@ -4,7 +4,7 @@ class ControladorCategorias {
     // Crear Categorías
     static public function ctrCrearCategoria(){
 
-        //$_POST["nuevaCategoria"] = "Clavos";
+        //$_POST["nuevaCategoria"] = "Clavos";        
 
         if (isset($_POST["nuevaCategoria"])){
             if(preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevaCategoria"])){

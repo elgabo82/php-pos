@@ -11,7 +11,7 @@ class AjaxProductos{
 
     // Crear código a partir de la categoría
 
-    public $idCategoria;
+    public $idCategoria;    
 
     public function ajaxCrearCodigoProducto(){
 

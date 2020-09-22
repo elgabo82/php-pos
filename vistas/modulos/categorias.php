@@ -117,7 +117,7 @@
           <button type="submit" class="btn btn-primary swalDefaultWarning">Guardar</button>
         </div>
       
-        <?php          
+        <?php       
 
           $crearCategoria = new ControladorCategorias();
           $crearCategoria->ctrCrearCategoria();

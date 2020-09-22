@@ -118,8 +118,7 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="fab fa-buffer"></i></span>
                 </div>
-                <input type="text" class="form-control input-lg" placeholder="Descripci&oacute;n del producto" 
-                  name="nuevaDescripcion" required>
+                <input type="text" class="form-control input-lg nuevaDescripcion" placeholder="Descripci&oacute;n del producto" id="nuevaDescripcion" name="nuevaDescripcion" required>
               </div>
             </div>
             
@@ -141,7 +140,9 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fa fa-arrow-up"></i></span>
                   </div>
-                  <input type="number" class="form-control input-lg" min="0" placeholder="Precio de compra" 
+                  <input type="number" class="form-control input-lg nuevoPrecioCompra" 
+                    id="nuevoPrecioCompra" 
+                    min="0" placeholder="Precio de compra" 
                     name="nuevoPrecioCompra" required>
                 </div>            
               </div>
@@ -152,7 +153,9 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fa fa-arrow-down"></i></span>
                   </div>
-                  <input type="number" class="form-control input-lg" min="0" placeholder="Precio de venta" 
+                  <input type="number" class="form-control input-lg nuevoPrecioVenta" 
+                    min="0" placeholder="Precio de venta"
+                    id="nuevoPrecioVenta"
                     name="nuevoPrecioVenta" required>
                 </div>
                 <br>
@@ -165,8 +168,9 @@
                     <!-- checkbox -->
                     <div class="form-group clearfix">
                       <div class="icheck-primary d-inline">
-                        <input type="checkbox" class="minimal percentage" id="usaPorcentaje" name="usaPorcentaje" checked>
-                        <label for="usaPorcentaje">
+                        <input type="checkbox" class="minimal porcentaje" 
+                          id="porcentaje" name="porcentaje" checked>
+                        <label for="porcentaje">
                           Utilizar porcentaje
                         </label>
                       </div>
@@ -178,7 +182,9 @@
                       <div class="input-group-prepend">                                                                
                           <span class="input-group-text"><i class="fa fa-percent"></i></span>                      
                       </div>
-                      <input type="number" class="form-control input-lg nuevoPorcentaje" min="0" value="40" required>                 
+                      <input type="number" class="form-control input-lg nuevoPorcentaje" 
+                        id="nuevoPorcentaje" name="nuevoPorcentaje"
+                        min="0" value="40" required>                 
                     </div>
                   </div>                  
                 </div>
@@ -198,9 +204,17 @@
         <!-- Modal footer -->
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Salir</button>
-          <button type="submit" class="btn btn-primary" data-dismiss="modal">Guardar</button>
-        </div>
+          <button type="submit" class="btn btn-primary">Guardar</button>
+        </div>        
+
       </form>
+
+      <?php
+          $crearProducto = new ControladorProductos();
+          $crearProducto->ctrCrearProducto();
+      ?>
+
+
     </div>
   </div>
 </div>

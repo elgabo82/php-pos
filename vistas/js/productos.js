@@ -85,3 +85,69 @@ $(".nuevaCategoria").change(function(){
 
     })
 })
+
+// Cálculo del precio de venta
+
+$("#nuevoPrecioCompra").change(function(){
+
+
+    if ($(".porcentaje").prop("checked")){
+        var valorPorcentaje = $("#nuevoPorcentaje").val();
+        //console.log(valorPorcentaje);
+
+        var porcentaje = Number((Number($("#nuevoPrecioCompra").val())*valorPorcentaje/100)+Number($("#nuevoPrecioCompra").val()));
+        //console.log(porcentaje);
+        $("#nuevoPrecioVenta").val(porcentaje);
+        $("#nuevoPrecioVenta").prop("readonly",true);
+    }
+    
+
+})
+
+//Cambio de porcentaje
+$(".nuevoPorcentaje").change(function(){
+    if ($(".porcentaje").prop("checked")){
+        var valorPorcentaje = $("#nuevoPorcentaje").val();
+        //console.log(valorPorcentaje);
+
+        var porcentaje = Number((Number($("#nuevoPrecioCompra").val())*valorPorcentaje/100)+Number($("#nuevoPrecioCompra").val()));
+        //console.log(porcentaje);
+        $("#nuevoPrecioVenta").val(porcentaje);
+        $("#nuevoPrecioVenta").prop("readonly",true);
+    }
+})
+
+/*$(document).ready(function(){
+    $(document).on('click', '.porcentaje', function(){
+        //alert('Checked');
+        $('.porcentaje').not(this).prop('checked',false);
+        $("#nuevoPrecioVenta").prop("readonly",false);
+    });
+})*/
+
+$(".porcentaje").click(function(){
+    //alert('Click');
+    if($(this).is(":checked")){
+        $("#nuevoPrecioVenta").prop("readonly",true);
+    }
+    else {
+        $("#nuevoPrecioVenta").prop("readonly",false);
+    }
+})
+
+
+/*if($(".porcentaje").prop("checked",false)){
+    $("#nuevoPrecioVenta").prop("readonly",false);
+}*/
+
+/*
+$(".porcentaje").on("ifChanged", function(){
+    console.log("porcentaje")
+    $("#nuevoPrecioVenta").prop("readonly",false);
+})*/
+
+// Verificar la Descripción
+/*$(".nuevaDescripcion").change(function(){
+    console.log($(".nuevaDescripcion").val());
+    $(".nuevaDescripcion").val($(".nuevaDescripcion"));
+})*/
