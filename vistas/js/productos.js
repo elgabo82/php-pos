@@ -42,3 +42,46 @@ $('.tablaProductos').DataTable({
 /*$(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip();
 });*/
+
+
+// Obtener nuevo código según categoría
+
+$(".nuevaCategoria").change(function(){
+    var idCategoria = $(this).val();
+
+    //console.log(idCategoria);
+
+    var datos = new FormData();
+    datos.append("idCategoria", idCategoria);    
+
+    $.ajax({
+        async: true,
+        url: 'ajax/productos.ajax.php',
+        method: 'POST',
+        data: datos,
+        cache: false,        
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: function(respuesta){
+            //console.log ("Respuesta: ",respuesta);
+
+            if (!respuesta) {
+                var nuevoCodigo = idCategoria+"01";
+                $("#nuevoCodigo").val(nuevoCodigo);
+            }
+            else {
+                var nuevoCodigo = Number(respuesta["codigo"]) + 1;
+                $("#nuevoCodigo").val(nuevoCodigo);
+            }
+
+
+            //console.log(nuevoCodigo);
+        },
+        error: function (respuesta){
+            console.log(respuesta);
+        }
+
+
+    })
+})

@@ -74,14 +74,41 @@
         <!-- Modal body -->
         <div class="modal-body">
           <div class="card-body">
-            <!--Código de producto-->
+            <!-- Selección de categoría -->
             <div class="form-group">
+              <div class="input-group">            
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fa fa-th"></i></span>
+                </div>
+                <select class="form-control input-lg nuevaCategoria" id="nuevaCategoria" name="nuevaCategoria" required>
+                  <option value="">Seleccione Categoría</option>
+
+                  <?php
+
+                    $item = null;
+                    $valor =  null;
+
+                    $categorias = ControladorCategorias::ctrMostrarCategorias($item, $valor);
+
+                    foreach ($categorias as $key => $value) {
+                      echo '<option value="'.$value["id"].'">'.$value["categoria"].'</option>';
+                    }
+
+                  ?>
+              
+                </select>
+              </div>
+            </div>
+
+
+            <!--Código de producto-->
+            <div class="form-group">              
               <div class="input-group">            
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="fas fa-barcode"></i></span>
                 </div>
-                <input type="text" class="form-control input-lg" placeholder="Ingrese el c&oacute;digo." 
-                  name="nuevoCodigo" required>
+                <input type="text" class="form-control input-lg" id="nuevoCodigo"
+                  name="nuevoCodigo" readonly required>
               </div>
             </div>
 
@@ -93,21 +120,6 @@
                 </div>
                 <input type="text" class="form-control input-lg" placeholder="Descripci&oacute;n del producto" 
                   name="nuevaDescripcion" required>
-              </div>
-            </div>
-
-            <!-- Selección de categoría -->
-            <div class="form-group">
-              <div class="input-group">            
-                <div class="input-group-prepend">
-                  <span class="input-group-text"><i class="fa fa-th"></i></span>
-                </div>
-                <select name="nuevaCategoria" class="form-control input-lg">
-                  <option value="">Seleccione Categoría</option>
-                  <option value="Uno">A</option>
-                  <option value="Dos">B</option>
-                  <option value="Tres">C</option>
-                </select>
               </div>
             </div>
             
