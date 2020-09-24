@@ -94,12 +94,8 @@ class TablaProductos{
     }
 }
 
-
-
 // Activar productos
-
 $activarProductos = new TablaProductos();
 $activarProductos->mostrarProductos();
-
 
 ?>

@@ -53,7 +53,6 @@ $('.tablaProductos').DataTable({
 
 
 // Obtener nuevo código según categoría
-
 $(".nuevaCategoria").change(function(){
     var idCategoria = $(this).val();
 
@@ -94,10 +93,8 @@ $(".nuevaCategoria").change(function(){
     })
 })
 
-// Cálculo del precio de venta
-
+// Cálculo del precio de venta - Ventana Agregar
 $("#nuevoPrecioCompra").change(function(){
-
 
     if ($(".porcentaje").prop("checked")){
         var valorPorcentaje = $("#nuevoPorcentaje").val();
@@ -112,7 +109,23 @@ $("#nuevoPrecioCompra").change(function(){
 
 })
 
-//Cambio de porcentaje
+// Cálculo del precio de venta - Ventana Editar
+$("#editarPrecioCompra").change(function(){
+
+    if ($(".porcentajeEditar").prop("checked")){
+        var valorPorcentaje = $("#editarPorcentaje").val();
+        //console.log(valorPorcentaje);
+
+        var porcentaje = Number((Number($("#editarPrecioCompra").val())*valorPorcentaje/100)+Number($("#editarPrecioCompra").val()));
+        //console.log(porcentaje);
+        $("#editarPrecioVenta").val(porcentaje);
+        $("#editarPrecioVenta").prop("readonly",true);
+    }
+    
+
+})
+
+//Cambio de porcentaje - Ventana Agregar
 $(".nuevoPorcentaje").change(function(){
     if ($(".porcentaje").prop("checked")){
         var valorPorcentaje = $("#nuevoPorcentaje").val();
@@ -125,6 +138,20 @@ $(".nuevoPorcentaje").change(function(){
     }
 })
 
+//Cambio de porcentaje - Ventana Editar
+$(".editarPorcentaje").change(function(){
+    if ($(".porcentajeEditar").prop("checked")){
+        var valorPorcentaje = $("#editarPorcentaje").val();
+        //console.log(valorPorcentaje);
+
+        var porcentaje = Number((Number($("#editarPrecioCompra").val())*valorPorcentaje/100)+Number($("#editarPrecioCompra").val()));
+        //console.log(porcentaje);
+        $("#editarPrecioVenta").val(porcentaje);
+        $("#editarPrecioVenta").prop("readonly",true);
+    }
+})
+
+
 /*$(document).ready(function(){
     $(document).on('click', '.porcentaje', function(){
         //alert('Checked');
@@ -133,16 +160,27 @@ $(".nuevoPorcentaje").change(function(){
     });
 })*/
 
+// Checkbox en la Ventana de Agregar
 $(".porcentaje").click(function(){
     //alert('Click');
     if($(this).is(":checked")){
-        $("#nuevoPrecioVenta").prop("readonly",true);
+        $("#nuevoPrecioVenta").prop("readonly",true);        
     }
     else {
-        $("#nuevoPrecioVenta").prop("readonly",false);
+        $("#nuevoPrecioVenta").prop("readonly",false);  
     }
 })
 
+// Checkbox en la Ventana de Edición
+$(".porcentajeEditar").click(function(){
+    //alert('Click');
+    if($(this).is(":checked")){        
+        $("#editarPrecioVenta").prop("readonly",true);
+    }
+    else {        
+        $("#editarPrecioVenta").prop("readonly",false);
+    }
+})
 
 /*if($(".porcentaje").prop("checked",false)){
     $("#nuevoPrecioVenta").prop("readonly",false);
@@ -237,9 +275,6 @@ $("#editarImagen").change(function(){
             }
 })
 
-
-
-
 // Editar Producto
 $(document).on("click", ".btnEditarProducto", function(){
     var idProducto = $(this).attr("idProducto");
@@ -308,3 +343,31 @@ $(document).on("click", ".btnEditarProducto", function(){
         }
     });
 })
+
+// Eliminar Producto
+$(document).on("click", ".btnEliminarProducto", function(){
+    
+    var idProducto = $(this).attr("idProducto");
+    var codigo = $(this).attr("codigo");
+    var imagen = $(this).attr("imagen");
+    //console.log("idProducto", idProducto);
+    
+                    
+    Swal.fire({        
+        title: "¡Cuidado!",
+        text: "¿Está seguro de querer borrar el producto?",
+        icon: "error",
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        cancelButtonText: 'Cancelar',
+        confirmButtonText: 'Sí, borrar producto.'
+    }).then((result)=>{
+        if(result.value) {
+            window.location = `index.php?ruta=productos&idProducto=${idProducto}&codigo=${codigo}&imagen=${imagen}`;
+        }
+    });   
+
+
+})
+

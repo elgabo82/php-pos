@@ -304,7 +304,7 @@
                   <input type="number" class="form-control input-lg editarPrecioVenta" 
                     min="0" step="any"
                     id="editarPrecioVenta"
-                    name="editarPrecioVenta" required>
+                    name="editarPrecioVenta" readonly required>
                 </div>
                 <br>
                 <!-- Checkbox porcentaje -->
@@ -316,9 +316,9 @@
                     <!-- checkbox -->
                     <div class="form-group clearfix">
                       <div class="icheck-primary d-inline">
-                        <input type="checkbox" class="minimal porcentaje" 
-                          id="porcentaje" name="porcentaje" checked>
-                        <label for="porcentaje">
+                        <input type="checkbox" class="minimal porcentajeEditar" 
+                          id="porcentajeEditar" name="porcentajeEditar" checked>
+                        <label for="porcentajeEditar">
                           Utilizar porcentaje
                         </label>
                       </div>
@@ -330,8 +330,8 @@
                       <div class="input-group-prepend">                                                                
                           <span class="input-group-text"><i class="fa fa-percent"></i></span>                      
                       </div>
-                      <input type="number" class="form-control input-lg nuevoPorcentaje" 
-                        id="nuevoPorcentaje" name="nuevoPorcentaje"
+                      <input type="number" class="form-control input-lg editarPorcentaje" 
+                        id="editarPorcentaje" name="editarPorcentaje"
                         min="0" value="40" required>                 
                     </div>
                   </div>                  
@@ -359,12 +359,18 @@
 
       </form>
 
-      <?php
-          /*$editarProducto = new ControladorProductos();
-          $editarProducto->ctrEditarProducto();*/
+      <?php      
+          $editarProducto = new ControladorProductos();
+          $editarProducto->ctrEditarProducto();
       ?>
 
 
     </div>
   </div>
 </div>
+
+<?php
+
+ $eliminarProducto = new ControladorProductos();
+ $eliminarProducto->ctrEliminarProducto();
+?>
