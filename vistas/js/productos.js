@@ -8,6 +8,14 @@
     }
 })*/
 
+/*$('.tablaProductos tbody').on('click', 'button', function(){
+    var data = table.row($(this).parents('tr')).data();
+
+    $(this).attr("idProducto", data[9]);
+
+    console.log(data[9]);
+});*/
+
 $('.tablaProductos').DataTable({
     "ajax": "ajax/datos-productos.ajax.php",
     "deferRender": true,
@@ -192,7 +200,7 @@ $("#nuevaImagen").change(function(){
 })
 
 // Editar foto
-$("#editarFoto").change(function(){
+$("#editarImagen").change(function(){
     
     var imagen = this.files[0];    
 
@@ -200,7 +208,7 @@ $("#editarFoto").change(function(){
         imagen["type"] != "image/jpg" &&
         imagen["type"] != "image/png") {
 
-            $("#editarFoto").val("");
+            $("#editarImagen").val("");
             Swal.fire({                
                 title: "Error al subir la imagen",
                 text: "¡La imagen debe estar en formato JPG o PNG!",
@@ -209,7 +217,7 @@ $("#editarFoto").change(function(){
             });
 
     } else if (imagen["size"] > 3000000) {
-                $("#editarFoto").val("");
+                $("#editarImagen").val("");
                 Swal.fire({
                     type: "error",
                     title: "Error al subir la imagen",
@@ -227,4 +235,76 @@ $("#editarFoto").change(function(){
                     $("#previsualizarEditada").attr("src", rutaImagen);
                 })
             }
+})
+
+
+
+
+// Editar Producto
+$(document).on("click", ".btnEditarProducto", function(){
+    var idProducto = $(this).attr("idProducto");
+    //console.log(`id - Producto: ${idProducto}`);
+    
+    
+    // Se va a hacer uso de AJAX
+
+    var datos = new FormData();
+    // Variable POST
+    datos.append("idProducto", idProducto);
+
+    //console.log(datos);
+    $.ajax({
+        async: true,
+        url: 'ajax/productos.ajax.php',
+        method: 'POST',
+        data: datos,
+        cache: false,
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: function (respuesta){
+            //console.log(respuesta);
+
+            var datosCategoria = new FormData();
+            //console.log(respuesta["id_categoria"]);
+
+            datosCategoria.append("idCategoria", respuesta["id_categoria"]);
+
+            $.ajax({
+                async: true,
+                url: 'ajax/categorias.ajax.php',
+                method: 'POST',
+                data: datosCategoria,
+                cache: false,
+                contentType: false,
+                processData: false,
+                dataType: "json",
+                success: function (respuesta){
+                    //console.log(respuesta);
+                    $("#editarCategoria").val(respuesta["id"]);
+                    $("#editarCategoria").html(respuesta["categoria"]);
+                },
+                error: function (respuesta){
+                    console.log(respuesta);
+                }
+            });
+
+            $("#editarCodigo").val(respuesta["codigo"]);
+            $("#editarDescripcion").val(respuesta["descripcion"]);            
+            $("#editarStock").val(respuesta["stock"]);
+            $("#editarPrecioCompra").val(respuesta["precio_compra"]);
+            $("#editarPrecioVenta").val(respuesta["precio_venta"]);
+                      
+
+            if (respuesta["imagen"] != "") {
+                //console.log(respuesta["imagen"]);
+                $("#imagenActual").val(respuesta["imagen"]);
+                
+                $("#previsualizarEditada").attr("src", respuesta["imagen"]);
+            }
+        },
+        error: function (respuesta){
+            console.log(respuesta);
+        }
+    });
 })
