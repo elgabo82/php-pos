@@ -94,34 +94,97 @@
         <!-- Modal body -->
         <div class="modal-body">
           <div class="card-body">
+
             <!--Nombre de usuario-->
             <div class="form-group">
               <div class="input-group">            
                 <div class="input-group-prepend">
-                  <span class="input-group-text"><i class="fa fa-th"></i></span>
+                  <span class="input-group-text"><i class="fa fa-user"></i></span>
                 </div>
-                <input type="text" class="form-control input-lg" placeholder="Nombre cliente" 
+                <input type="text" class="form-control input-lg" placeholder="Nombres y Apellidos del cliente" 
                   name="nuevoCliente" id="nuevoCliente" required>
               </div>
             </div>
 
-            <!--Identificación-->
+            <div class="row">
+                  <div class="col-xs-12 col-sm-4">
+                    <!-- checkbox -->
+                    <div class="form-group clearfix">
+                      <div class="input-group-prepend">
+                        <button type="button" class="btn btn-primary btnValidarCedula" 
+                          id="btnValidarCedula" name="btnValidarCedula">Validar c&eacute;dula
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="col-xs-12 col-sm-8">
+                  <!--Identificación-->
+                  <div class="form-group">
+                      <div class="input-group">            
+                        <div class="input-group-prepend">
+                          <span class="input-group-text"><i class="fa fa-id-card"></i></span>
+                        </div>
+                        <input type="number" min="0" class="form-control input-lg" placeholder="N&uacute;mero de c&eacute;dula" 
+                          name="nuevaCedula" id="nuevaCedula" data-toogle="tooltip" data-placement="bottom" required>
+                      </div>
+                    </div>
+                  </div>                  
+              </div>
+
+            <!--Fecha de Nacimiento-->
             <div class="form-group">
               <div class="input-group">            
                 <div class="input-group-prepend">
-                  <span class="input-group-text"><i class="fa fa-th"></i></span>
+                  <span class="input-group-text"><i class="fas fa-calendar-alt"></i></span>
                 </div>
-                <input type="number" min="0" class="form-control input-lg" placeholder="N&uacute;mero de c&eacute;dula" 
-                  name="nuevaCedula" id="nuevaCedula" required>
+                <input type="text" class="form-control input-lg" 
+                  data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/aaaa" data-mask 
+                  id="nuevaFechaNacimiento" name="nuevaFechaNacimiento" placeholder="Fecha de nacimiento: dd/mm/aaaa" required>
+              </div>
+            </div>            
+
+            <!--Correo electrónico-->
+            <div class="form-group">
+              <div class="input-group">            
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fa fa-envelope"></i></span>
+                </div>
+                <input type="email" min="0" class="form-control input-lg" placeholder="Correo electr&oacute;nico" 
+                  name="nuevoCorreo" id="nuevoCorreo" required>
               </div>
             </div>
+
+            <!--Teléfono-->
+            <div class="form-group">
+              <div class="input-group">            
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fas fa-phone"></i></span>
+                </div>
+                <input type="text" min="0" class="form-control input-lg" placeholder="Ingresar tel&eacute;fono" 
+                  name="nuevoTelefono" id="nuevoTelefono" data-inputmask="'mask': ['999-99 999-999999 [x99999]', 
+                  '+999 99 999 99999[9]-9999']" data-mask required>
+              </div>
+            </div>
+
+            <!--Dirección-->
+            <div class="form-group">
+              <div class="input-group">            
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fas fa-route"></i></span>
+                </div>
+                <input type="text" class="form-control input-lg" placeholder="Direcci&oacute;n" 
+                  name="nuevaDireccion" id="nuevaDireccion" required>
+              </div>
+            </div>        
+
           </div> 
         </div>
 
         <!-- Modal footer -->
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Salir</button>
-          <button type="submit" class="btn btn-primary" data-dismiss="modal">Guardar</button>
+          <button type="submit" class="btn btn-primary" data-dismiss="modal">Guardar cliente</button>
         </div>
       </form>
     </div>

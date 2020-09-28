@@ -33,7 +33,10 @@
   <link rel="stylesheet" href="vistas/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
   <!-- iCheck for checkboxes and radio inputs -->
   <link rel="stylesheet" href="vistas/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
-    
+  <!-- daterange picker -->
+  <link rel="stylesheet" href="vistas/plugins/daterangepicker/daterangepicker.css">
+  
+  <!-- Scripts JS -->
   <!-- jQuery -->
   <script src="vistas/plugins/jquery/jquery.min.js"></script>
   <!-- Bootstrap 4 -->
@@ -42,6 +45,16 @@
   <script src="vistas/plugins/sweetalert2/sweetalert2.min.js"></script>
   <!-- Toastr -->
   <script src="vistas/plugins/toastr/toastr.min.js"></script>
+
+  <!-- InputMask -->
+  <script src="vistas/plugins/moment/moment-with-locales.min.js"></script>
+  <script src="vistas/plugins/inputmask/min/jquery.inputmask.bundle.min.js"></script>
+  <!-- date-range-picker -->
+  <script src="vistas/plugins/daterangepicker/daterangepicker.js"></script>
+  <!-- Tempusdominus Bootstrap 4 -->
+  <script src="vistas/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+  
+
   
   <!-- AdminLTE for demo purposes
   <script src="./vistas/dist/js/demo.js"></script> -->
@@ -52,9 +65,7 @@
   <script src="vistas/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
   <script src="vistas/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
   <!-- AdminLTE App -->
-  <script src="vistas/dist/js/adminlte.js"></script>
-  
-
+  <script src="vistas/dist/js/adminlte.js"></script> 
 
   <!-- Principal -->
   <script src="vistas/js/main.js"></script>
@@ -113,5 +124,6 @@ if (isset($_SESSION["sesionIniciada"]) && $_SESSION["sesionIniciada"] == "ok"){
 <script src="vistas/js/usuarios.js"></script>
 <script src="vistas/js/categorias.js"></script>
 <script src="vistas/js/productos.js"></script>
+<script src="vistas/js/clientes.js"></script>
 </body>
 </html>
