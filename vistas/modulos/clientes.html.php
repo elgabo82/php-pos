@@ -139,8 +139,8 @@
                   <span class="input-group-text"><i class="fas fa-calendar-alt"></i></span>
                 </div>
                 <input type="text" class="form-control input-lg" 
-                  data-inputmask-alias="datetime" data-inputmask-inputformat="yyyy/mm/dd" data-mask 
-                  id="nuevaFechaNacimiento" name="nuevaFechaNacimiento" placeholder="Fecha de nacimiento: yyyy/mm/dd" required>
+                  data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/aaaa" data-mask 
+                  id="nuevaFechaNacimiento" name="nuevaFechaNacimiento" placeholder="Fecha de nacimiento: dd/mm/aaaa" required>
               </div>
             </div>            
 
@@ -162,7 +162,8 @@
                   <span class="input-group-text"><i class="fas fa-phone"></i></span>
                 </div>
                 <input type="text" min="0" class="form-control input-lg" placeholder="Ingresar tel&eacute;fono" 
-                  name="nuevoTelefono" id="nuevoTelefono" data-inputmask="'mask': ['999-99 999-999999']" data-mask required>
+                  name="nuevoTelefono" id="nuevoTelefono" data-inputmask="'mask': ['999-99 999-999999 [x99999]', 
+                  '+999 99 999 99999[9]-9999']" data-mask required>
               </div>
             </div>
 
@@ -183,14 +184,9 @@
         <!-- Modal footer -->
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Salir</button>
-          <button type="submit" class="btn btn-primary">Guardar cliente</button>
+          <button type="submit" class="btn btn-primary" data-dismiss="modal">Guardar cliente</button>
         </div>
       </form>
-
-      <?php
-        $crearCliente = new ControladorClientes();
-        $crearCliente->ctrCrearCliente();
-      ?>
     </div>
   </div>
 </div>

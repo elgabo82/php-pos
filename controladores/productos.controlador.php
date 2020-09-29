@@ -116,8 +116,7 @@ class ControladorProductos{
                 echo '<script>
                     
                     Swal.fire({
-                        icon: "error",
-                        type: "error",
+                        icon: "error",                        
                         title: "¡Uy!, Algo sali&oacute; mal",
                         text: "El producto no puede estar vacío o llevar caracteres especiales.",
                         showConfirmButton: true,

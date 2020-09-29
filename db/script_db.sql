@@ -39,9 +39,9 @@ CREATE TABLE `productos` (
 
 
 CREATE TABLE `clientes` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` text COLLATE utf8_spanish_ci NOT NULL,
-  `documento` int(11) NOT NULL,
+  `documento` int(11) NOT NULL UNIQUE,
   `email` text COLLATE utf8_spanish_ci NOT NULL,
   `telefono` text COLLATE utf8_spanish_ci NOT NULL,
   `direccion` text COLLATE utf8_spanish_ci NOT NULL,
@@ -120,3 +120,7 @@ INSERT INTO `productos` (`id`, `id_categoria`, `codigo`, `descripcion`, `imagen`
 (58, 5, '515', 'Coche llanta neumatica', 'vistas/img/productos/default/anonymous.png', 20, 420, 588, 0, '2017-12-21 21:56:28'),
 (59, 5, '516', 'Cono slump', 'vistas/img/productos/default/anonymous.png', 20, 140, 196, 0, '2017-12-21 21:56:28'),
 (60, 5, '517', 'Cortadora de Baldosin', 'vistas/img/productos/default/anonymous.png', 20, 930, 1302, 0, '2017-12-21 21:56:28');
+
+
+INSERT INTO `clientes` (`id`, `nombre`, `documento`, `email`, `telefono`, `direccion`, `fecha_nacimiento`, `compras`, `fecha`) VALUES
+(1, 'Gabriel Morejón López', 1309540779, 'gabrielmorejon@gmail.com.com', '(593) 995-974963', 'Km 1 1/2 vía a Crucita', '1982-06-09', 0, '2020-01-22 17:41:41');
