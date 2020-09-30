@@ -275,3 +275,9 @@
     </div>
   </div>
 </div>
+
+<?php
+
+ $eliminarCliente = new ControladorClientes();
+ $eliminarCliente->ctrEliminarCliente();
+?>

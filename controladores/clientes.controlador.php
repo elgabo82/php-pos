@@ -13,7 +13,7 @@ class ControladorClientes{
         if(isset($_POST["nuevoCliente"])){
 
             if(preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevoCliente"]) &&
-                preg_match('/^[0-9]+$/', $_POST["nuevaCedula"]) &&
+                //preg_match('/^[0-9]+$/', $_POST["nuevaCedula"]) &&
                 filter_var($_POST["nuevoCorreo"], FILTER_VALIDATE_EMAIL)
                 /*preg_match('/^[0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/', 
                     $_POST["nuevoCorreo"])/* &&
@@ -215,6 +215,42 @@ class ControladorClientes{
             }
         }            
     }
+
+        // Eliminar Producto
+        static public function ctrEliminarCliente(){
+
+            if(isset($_GET["idCliente"])){
+                $tabla = "clientes";
+                $datos = $_GET["idCliente"];
+    
+                /*if($_GET["imagen"] != "" && $_GET["imagen"] != "vistas/img/productos/default/anonymous.png"){
+                    unlink($_GET["imagen"]);
+                    rmdir('vistas/img/productos/'.$_GET["codigo"]);
+                }*/
+    
+                $respuesta = ModeloClientes::mdlEliminarCliente($tabla, $datos);
+    
+                if ($respuesta == "ok") {
+                    echo '<script>                    
+                    Swal.fire({
+                        icon: "success",
+                        title: "Tarea exitosa",
+                        text: "El cliente ha sido borrado correctamente.",
+                        showConfirmButton: true,
+                        confirmButtonText: "Cerrar",
+                        
+                    }).then((result) => {
+                        if (result) {
+                            window.location = "clientes";
+                            }
+                        }); 
+                    
+                    </script>';
+                }
+            }
+    
+        }
+    
 
 }
 

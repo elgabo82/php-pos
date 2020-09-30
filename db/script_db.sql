@@ -41,7 +41,7 @@ CREATE TABLE `productos` (
 CREATE TABLE `clientes` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` text COLLATE utf8_spanish_ci NOT NULL,
-  `documento` int(11) NOT NULL UNIQUE,
+  `documento` BIGINT(13) NOT NULL UNIQUE,
   `email` text COLLATE utf8_spanish_ci NOT NULL,
   `telefono` text COLLATE utf8_spanish_ci NOT NULL,
   `direccion` text COLLATE utf8_spanish_ci NOT NULL,
@@ -123,4 +123,7 @@ INSERT INTO `productos` (`id`, `id_categoria`, `codigo`, `descripcion`, `imagen`
 
 
 INSERT INTO `clientes` (`id`, `nombre`, `documento`, `email`, `telefono`, `direccion`, `fecha_nacimiento`, `compras`, `fecha`) VALUES
-(1, 'Gabriel Morejón López', 1309540779, 'gabrielmorejon@gmail.com.com', '(593) 995-974963', 'Km 1 1/2 vía a Crucita', '1982-06-09', 0, '2020-01-22 17:41:41');
+(1, 'Gabriel Morejón López', 1309540779, 'gabrielmorejon@gmail.com', '(593) 995-974963', 'Km 1 1/2 vía a Crucita', '1982-06-09', 0, '2020-01-22 17:41:41');
+
+INSERT INTO `clientes` (`id`, `nombre`, `documento`, `email`, `telefono`, `direccion`, `fecha_nacimiento`, `compras`, `fecha`) VALUES
+(2, 'Consumidor Final', 9999999999, 'soporte@grupofmo.com', '(593) 995-974963', 'Km 1 1/2 vía a Crucita', '1982-06-09', 0, '2020-01-22 17:41:41');

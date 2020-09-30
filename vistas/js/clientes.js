@@ -178,7 +178,7 @@ var longcheck = longitud - 1;
         }
 }
 
-
+// Editar Cliente
 $(document).on("click", ".btnEditarCliente", function(){
     var idCliente = $(this).attr("idCliente");
     //console.log(`id - Cliente: ${idCliente}`);   
@@ -219,4 +219,33 @@ $(document).on("click", ".btnEditarCliente", function(){
             console.log(respuesta);
         }
     });
+})
+
+
+// Eliminar Cliente
+// Eliminar Producto
+$(document).on("click", ".btnEliminarCliente", function(){
+    
+    var idCliente = $(this).attr("idCliente");
+    var documento = $(this).attr("documento");
+    //var imagen = $(this).attr("imagen");
+    //console.log("idCliente", idCliente);
+    
+                    
+    Swal.fire({        
+        title: "¡Cuidado!",
+        text: "¿Está seguro de querer borrar el cliente?",
+        icon: "error",
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        cancelButtonText: 'Cancelar',
+        confirmButtonText: 'Sí, borrar cliente.'
+    }).then((result)=>{
+        if(result.value) {
+            window.location = `index.php?ruta=clientes&idCliente=${idCliente}&documento=${documento}`;
+        }
+    });   
+
+
 })
