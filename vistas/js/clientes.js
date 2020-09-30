@@ -12,7 +12,39 @@ $('#fechaNacimiento').datetimepicker({
     format: 'L'
 });
 
+// Mostrar Clientes
+$('.tablaClientes').DataTable({
+    "ajax": "ajax/datos-clientes.ajax.php",
+    "deferRender": true,
+    "retrieve": true,
+    "processing": true,
+    "language": {
+        "sProcessing": "Procesando...",
+        "sLengthMenu": "Mostrar _MENU_ registros",
+        "sZeroRecords": "No se encontraron resultados.",
+        "sEmptyTable": "No hay datos disponibles.",
+        "sInfo": "Mostrando registros del _START_ al _END_ de _TOTAL_.",
+        "sInfoEmpty": "Sin registros.",
+        "sInfoFiltered": "(Filtro de un total de _MAX_ registros)",
+        "sInfoPostFix": "",
+        "sSearch": "Buscar:",
+        "sUrl": "",
+        "sInfoThousands": "",
+        "sLoadingRecords": "Cargando registros...",
+        "oPaginate": {
+            "sFirst": "Primero",
+            "sLast": "&Uacute;ltimo",
+            "sNext": "Siguiente",
+            "sPrevious": "Anterior"
+        },
+        "oAria": {
+            "sSortAscending": ": Ordenar de forma ascendente",
+            "sSortDescending": ": Ordenar de forma descendente"
+        }
+    }
+});
 
+// Validar cédula
 $(".btnValidarCedula").on("click", function(){    
 
     var valor = document.getElementById("nuevaCedula").value.trim();
@@ -45,6 +77,7 @@ $(".btnValidarCedula").on("click", function(){
 
 })
 
+// Verificar cédula
 $("#nuevaCedula").change(function(){
 
     var resultado = validarCedula($(this).val());
@@ -59,7 +92,7 @@ $("#nuevaCedula").change(function(){
     }
 })
 
-
+// Función para validar la cédula
 function validarCedula(valor){
     //var cad = document.getElementById("nuevaCedula").value.trim();
 
@@ -144,3 +177,46 @@ var longcheck = longitud - 1;
             });
         }
 }
+
+
+$(document).on("click", ".btnEditarCliente", function(){
+    var idCliente = $(this).attr("idCliente");
+    //console.log(`id - Cliente: ${idCliente}`);   
+    
+
+    var datos = new FormData();
+    // Variable POST
+    datos.append("idCliente", idCliente);
+
+    //console.log(datos);
+    $.ajax({
+        async: true,
+        url: 'ajax/clientes.ajax.php',
+        method: 'POST',
+        data: datos,
+        cache: false,
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: function (respuesta){
+            //console.log(respuesta);
+            $("#idCliente").val(respuesta["id"]);
+            $("#editarCliente").val(respuesta["nombre"]);
+            $("#editarCedula").val(respuesta["documento"]);
+            $("#editarCorreo").val(respuesta["email"]);
+            $("#editarTelefono").val(respuesta["telefono"]);
+            $("#editarDireccion").val(respuesta["direccion"]);
+            $("#editarFechaNacimiento").val(respuesta["fecha_nacimiento"]);
+            //$("#claveActual").val(respuesta["compras"]);
+
+            /*if (respuesta["foto"] != "") {
+                //console.log(respuesta["foto"]);
+                
+                $("#previsualizarEditada").attr("src", respuesta["foto"]);
+            }*/
+        },
+        error: function (respuesta){
+            console.log(respuesta);
+        }
+    });
+})

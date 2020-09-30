@@ -29,9 +29,9 @@
           </button>
         </div>
 
-        <div class="card-body">
-        
-          <table id="tabla" class="table table-bordered dt-responsive table-striped tabla">
+        <div class="card-body">        
+        <!--<th>&Uacute;ltima compra</th>-->
+          <table id="tablaClientes" class="table table-bordered dt-responsive table-striped tablaClientes" width="100%" name="tablaClientes">
             <thead>
               <tr>
                 <th>#ID</th>
@@ -41,31 +41,12 @@
                 <th>Tel&eacute;fono</th>
                 <th>Direcci&oacute;n</th>
                 <th>Fecha de nacimiento</th>
-                <th>Total de compras</th>
-                <th>&Uacute;ltima compra</th>
+                <th>Total de compras</th>                
                 <th>Ingreso al sistema</th>
                 <th>Acciones</th>
               </tr>
             </thead>
-            <tbody>
-              <tr>
-                <td>1</td>
-                <td>Gabriel Morej&oacute;n</td>
-                <td>1309540779</td>
-                <td>gabrielmorejon@grupofmo.com</td>
-                <td>0995974963</td>
-                <td>V&iacute;a a Crucita</td>
-                <td>09/06/1982</td>
-                <td>10</td>
-                <td>2020-08-15 16:15:25</td>
-                <td>2019-06-15 09:45:55</td>
-                <td>
-                  <div class="btn-group">
-                    <button class="btn btn-warning"><i class="fas fa-edit"></i></button>
-                    <button class="btn btn-danger"><i class="fa fa-times"></i></button>
-                  </div>
-                </td>
-              </tr>
+            <tbody> 
                                    
             </tbody>            
           </table>                  
@@ -77,8 +58,6 @@
     </section>
     <!-- /.content -->
   </div>
-
-
 
 <!-- Ventana Modal - Agregar clientes -->
 <div class="modal fade" id="modalAgregarCliente" role="dialog">
@@ -190,6 +169,108 @@
       <?php
         $crearCliente = new ControladorClientes();
         $crearCliente->ctrCrearCliente();
+      ?>
+    </div>
+  </div>
+</div>
+
+<!-- Ventana Modal - Editar clientes -->
+<div class="modal fade" id="modalEditarCliente" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form method="post" role="form">
+        <!-- Modal Header -->
+        <div class="modal-header" style="background: #3c8dbc; color: white;">
+          <h4 class="modal-title">Editar cliente</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+
+        <!-- Modal body -->
+        <div class="modal-body">
+          <div class="card-body">
+
+            <!--Nombre de usuario-->
+            <div class="form-group">
+              <div class="input-group">            
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fa fa-user"></i></span>
+                </div>
+                <input type="text" class="form-control input-lg" 
+                  name="editarCliente" id="editarCliente" required>
+                <input type="hidden" id="idCliente" name="idCliente">
+              </div>
+            </div>
+
+
+            <div class="form-group">
+              <div class="input-group">            
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fa fa-id-card"></i></span>
+                </div>
+                <input type="text" class="form-control input-lg"
+                  name="editarCedula" id="editarCedula" readonly>
+              </div>
+            </div>
+
+
+            <!--Fecha de Nacimiento-->
+            <div class="form-group">
+              <div class="input-group">            
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fas fa-calendar-alt"></i></span>
+                </div>
+                <input type="text" class="form-control input-lg" 
+                  data-inputmask-alias="datetime" data-inputmask-inputformat="yyyy/mm/dd" data-mask 
+                  id="editarFechaNacimiento" name="editarFechaNacimiento" required>
+              </div>
+            </div>            
+
+            <!--Correo electrónico-->
+            <div class="form-group">
+              <div class="input-group">            
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fa fa-envelope"></i></span>
+                </div>
+                <input type="email" min="0" class="form-control input-lg" 
+                  name="editarCorreo" id="editarCorreo" required>
+              </div>
+            </div>
+
+            <!--Teléfono-->
+            <div class="form-group">
+              <div class="input-group">            
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fas fa-phone"></i></span>
+                </div>
+                <input type="text" min="0" class="form-control input-lg editarTelefono"
+                  name="editarTelefono" id="editarTelefono" data-inputmask="'mask': ['999-99 999-999999']" data-mask required>
+              </div>
+            </div>
+
+            <!--Dirección-->
+            <div class="form-group">
+              <div class="input-group">            
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><i class="fas fa-route"></i></span>
+                </div>
+                <input type="text" class="form-control input-lg"
+                  name="editarDireccion" id="editarDireccion" required>
+              </div>
+            </div>        
+
+          </div> 
+        </div>
+
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Salir</button>
+          <button type="submit" class="btn btn-primary">Guardar cambios</button>
+        </div>
+      </form>
+
+      <?php    
+        $editarCliente = new ControladorClientes();        
+        $editarCliente->ctrEditarCliente();      
       ?>
     </div>
   </div>
