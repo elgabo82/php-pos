@@ -20,96 +20,194 @@
 
     <!-- Contenido Principal -->
     <section class="content">
-      <div class="row">
-        <!--<div class="card">-->
-          <!-- Formulario de ventas -->
-          <div class="col-lg-5 col-sm-12">
-            <div class="card card-success">
-              <div class="card-header" style="background: #3c8dbc color:white;">
-                <div class="card-body">
-                  <form role="form" method="post">
-                    <div class="card">
-                      <!-- Vendedor -->
+      <div class="row">        
+        <!-- Formulario de ventas -->
+        <div class="col-lg-5 col-sm-12">
+          <div class="card card-success">
+            <div class="card-header">
+              <h3 class="card-title">Ventas</h3>
+            </div>
+            <form role="form" method="post">
+              <div class="card-body">              
+                <div class="card">
+                  <!-- Vendedor -->
+                  <div class="form-group">
+                    <div class="input-group">
+                      <span class="input-group-text"><i class="fas fa-user"></i></span>
+                      <input type="text" class="form-control" id="nuevoVendedor" name="nuevoVendedor" value="Usuario Administrador" readonly>
+                    </div>
+                  </div>
+
+                  <!-- Código venta -->
+                  <div class="form-group">
+                    <div class="input-group">
+                      <span class="input-group-text"><i class="fas fa-key"></i></span>
+                      <input type="text" class="form-control" id="nuevaVenta" name="nuevaVenta" value="1234567890" readonly>
+                    </div>
+                  </div>
+
+                  <!-- Entrada del cliente -->
+                  <div class="form-group">
+                    <div class="input-group">
+                      <span class="input-group-text"><i class="fas fa-users"></i></span>
+                        <select class="form-control" id="seleccionarCliente" name="seleccionarCliente" required>
+                          <option value="">Seleccionar cliente</option>
+                        </select>                          
+                      <span class="input-group-text">                          
+                        <button class="btn btn-default btn-xs" data-toggle="modal" data-target="#modalAgregarCliente" data-dismiss="modal">Agregar Cliente</button>
+                      </span>
+                    </div>
+                  </div>
+
+                  <!-- Entrada del producto -->
+                  <div class="row nuevoProducto">
+                    <!-- Descripción del producto-->
+                    <div class="col-sm-6" style="padding-right: 0px">
                       <div class="form-group">
                         <div class="input-group">
-                          <span class="input-group-text"><i class="fas fa-user"></i></span>
-                          <input type="text" class="form-control" id="nuevoVendedor" name="nuevoVendedor" value="Usuario Administrador" readonly>
-                        </div>
+                          <div class="input-group-prepend">
+                            <span class="input-group-text">
+                              <button class="btn btn-danger btn-xs"><i class="fas fa-times-circle"></i></button>
+                            </span>
+                          </div>                                
+                          <input type="text" class="form-control" id="agregarProducto" name="agregarProducto" placeholder="Producto" required>
+                        </div>                            
                       </div>
+                    </div>
 
-                      <!-- Vendedor -->
+                    <!-- Cantidad del producto -->
+                    <div class="col-sm-2">
+                      <input type="number" class="form-control" id="nuevaCantidadProducto" name="nuevaCantidadProducto" min="0" placeholder="0" required>
+                    </div>
+
+                    <!-- Precio del producto -->
+                    <div class="col-sm-4" style="padding-left: 0px">
                       <div class="form-group">
                         <div class="input-group">
-                          <span class="input-group-text"><i class="fas fa-key"></i></span>
-                          <input type="text" class="form-control" id="nuevaVenta" name="nuevaVenta" value="1234567890" readonly>
+                          <div class="input-group-prepend">
+                            <span class="input-group-text">
+                              <i class="ion ion-social-usd"></i>
+                            </span>
+                          </div>                                
+                          <input type="number" class="form-control" id="nuevoPrecioProducto" name="nuevoPrecioProducto" min="1" placeholder="00000" readonly required>
                         </div>
                       </div>
+                    </div>
+                  </div>
 
-                      <!-- Entrada del cliente -->
-                      <div class="form-group">
-                        <div class="input-group">
-                          <span class="input-group-text"><i class="fas fa-users"></i></span>
-                            <select class="form-control" id="seleccionarCliente" name="seleccionarCliente" required>
-                            <option value="">Seleccionar cliente</option>
-                            </select>                          
-                          <span class="input-group-text">                          
-                            <button class="btn btn-default btn-xs" data-toggle="modal" data-target="#modalAgregarCliente" data-dismiss="modal">Agregar Cliente</button></span>
-                        </div>
-                      </div>
-
-                      <!-- Entrada del producto -->
-                      <div class="row nuevoProducto">
-                        <!-- Descripción del producto-->
-                        <div class="col-sm-6" style="padding-right: 0px">
-                          <div class="form-group">
+                  <!-- Botón agregar producto -->
+                  <button type="button" class="btn btn-default hidden-lg">Agregar Producto</button>
+                  
+                  <!-- Impuesto y total de venta -->
+                  <div class="row">
+                    <table class="table no-border">
+                      <thead>
+                        <tr>
+                          <th>Impuestos</th>
+                          <th>Total</th>                                           
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td style="width: 50%">
                             <div class="input-group">
+                              <input type="number" class="form-control" id="nuevoImpuestoVenta" name="nuevoImpuestoVenta" 
+                                  min="1" placeholder="0" required>
                               <div class="input-group-prepend">
                                 <span class="input-group-text">
-                                  <button class="btn btn-danger btn-xs"><i class="fas fa-times-circle"></i></button>
+                                  <i class="fa fa-percent"></i>
                                 </span>
-                              </div>                                
-                              <input type="text" class="form-control" id="agregarProducto" name="agregarProducto" placeholder="Producto" required>
-                            </div>                            
-                          </div>
-                        </div>
-
-                        <!-- Cantidad del producto -->
-                        <div class="col-sm-2">
-                          <input type="number" class="form-control" id="nuevaCantidadProducto" name="nuevaCantidadProducto" min="0" placeholder="0" required>
-                        </div>
-
-                        <!-- Precio del producto -->
-                        <div class="col-sm-4" style="padding-left: 0px">
-                          <div class="form-group">
+                              </div>                              
+                            </div>
+                          </td>
+                          <td style="width: 50%">
                             <div class="input-group">
                               <div class="input-group-prepend">
                                 <span class="input-group-text">
                                   <i class="ion ion-social-usd"></i>
                                 </span>
-                              </div>                                
-                              <input type="number" class="form-control" id="nuevoPrecioProducto" name="nuevoPrecioProducto" min="1" placeholder="00000" readonly required>
-                            </div>                            
-                          </div>
+                              </div>
+                              <input type="number" class="form-control" id="nuevoTotalVenta" name="nuevoTotalVenta" 
+                                min="1" placeholder="0" readonly required>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+
+                  <hr>
+                  <!-- Método de pago -->
+
+                  <div class="row">
+                    <div class="col-sm-6" style="padding-right: 0px">
+                      <div class="form-group">
+                        <div class="input-group">
+                            <!--<span class="input-group-text"><i class="fas fa-money-check-alt"></i></span>-->
+                              <select class="form-control" id="nuevoMetodoPago" name="nuevoMetodoPago" required>
+                                <option value="">Forma de pago</option>
+                                <option value="efectivo">Efectivo</option>
+                                <option value="tarjetaDebito">Tarjeta de d&eacute;bito</option>
+                                <option value="tarjetaCredito">Tarjeta de cr&eacute;dito</option>
+                              </select>                          
+                            <!--<span class="input-group-text">                       
+                              <button class="btn btn-default btn-xs" data-toggle="modal" data-target="#modalAgregarCliente" data-dismiss="modal">Confirmar Pago</button>
+                            </span>-->
                         </div>
                       </div>
-
-                      <!-- Botón agregar producto -->
-                      <button type="button" class="btn btn-default hidden-lg">Agregar Producto</button>
-                      <hr>
-
                     </div>
-                  </form>
-                </div>
-              </div>
-            </div>
+
+                    <div class="col-sm-6" style="padding-left: 0px">
+                      <div class="form-group">
+                        <div class="input-group">
+                            <!--<span class="input-group-text"><i class="fas fa-money-check-alt"></i></span>-->
+                            <input type="text" class="form-control" id="nuevoCodigoTransaccion" name="nuevoCodigoTransaccion" 
+                                placeholder="C&oacute;digo de transacci&oacute;n" required>
+                            <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                </div>              
+              </div>              
+              <div class="card-footer">
+                <!-- Botón Guardar Venta -->
+                <button type="submit" class="btn btn-primary float-right">Guardar venta</button>
+              </div> 
+            </form>            
           </div>
-        <!--</div>-->
+        </div>
+        
 
         <!-- Tabla de productos -->
         <div class="col-lg-7 hidden-md hidden-sm hidden-xs">
           <div class="card card-warning">
-            <div class="card-header with-border" style="background: #3c8dbc color:white;">
+              <div class="card-header">
+                <h3 class="card-title">Productos</h3>
+              </div>
+              <div class="card-body">
+                <!--<form role="form" method="post">-->
+                  <div class="card">
+                    <table class="table table-bordered table-striped dt-responsive tablaProductos">
+                      <thead>
+                        <tr>
+                          <th style="width: 10px">#</th>
+                          <th>Imagen</th>
+                          <th>C&oacute;digo</th>
+                          <th>Descripci&oacute;n</th>                          
+                          <th>Stock</th>
+                          <th>Acciones</th>
+                        </tr>
+                      </thead>
+                      <tbody>
 
+                      </tbody>                      
+                    </table>
+                  </div>
+
+                <!--</form>-->
+              </div>              
             </div>
           </div>
         </div>
