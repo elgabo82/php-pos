@@ -43,7 +43,27 @@
                   <div class="form-group">
                     <div class="input-group">
                       <span class="input-group-text"><i class="fas fa-key"></i></span>
-                      <input type="text" class="form-control" id="nuevaVenta" name="nuevaVenta" value="1234567890" readonly>
+
+                      <?php
+                        $item = null;
+                        $valor = null;
+
+                        $ventas = ControladorVentas::ctrMostrarVentas($item, $valor);
+
+                        if(!$ventas) {
+                          echo '<input type="text" class="form-control" id="nuevaVenta" name="nuevaVenta" value="0010010000215" readonly>';
+                        }
+                        else {
+                          foreach ($ventas as $key => $value) {
+
+                          }
+                          $codigo = $value["codigo"]+1;
+
+                          echo '<input type="text" class="form-control" id="nuevaVenta" name="nuevaVenta" value="'.$codigo.'" readonly>';
+                        }
+                      ?>
+
+                      
                     </div>
                   </div>
 
@@ -53,6 +73,17 @@
                       <span class="input-group-text"><i class="fas fa-users"></i></span>
                         <select class="form-control" id="seleccionarCliente" name="seleccionarCliente" required>
                           <option value="">Seleccionar cliente</option>
+                          <?php
+                            $item = null;
+                            $valor = null;
+
+                            $categorias = ControladorClientes::ctrMostrarClientes($item, $valor);
+
+                            foreach ($categorias as $key => $value) {
+                              echo '<option value="'.$value["id"].'">'.$value["nombre"].'</option>';
+                            }
+
+                          ?>
                         </select>                          
                       <span class="input-group-text">                          
                         <button class="btn btn-default btn-xs" data-toggle="modal" data-target="#modalAgregarCliente" data-dismiss="modal">Agregar Cliente</button>
@@ -190,7 +221,7 @@
               <div class="card-body">
                 <!--<form role="form" method="post">-->
                   <div class="card">
-                    <table class="table table-bordered table-striped dt-responsive tablaProductos">
+                    <table class="table table-bordered table-striped dt-responsive tablaProductosVentas">
                       <thead>
                         <tr>
                           <th style="width: 10px">#</th>

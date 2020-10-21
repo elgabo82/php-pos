@@ -1,4 +1,5 @@
-CREATE DATABASE `pos` IF NOT EXISTS `pos`;
+CREATE DATABASE IF NOT EXISTS `pos` DEFAULT CHARACTER SET utf8 COLLATE utf8_spanish_ci;
+USE `pos`;
 
 
 CREATE TABLE `usuarios` (
@@ -67,8 +68,26 @@ CREATE TABLE `ventas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 
+/* ALTER TABLE `ventas` 
+  ADD FOREIGN KEY (`id_cliente`) REFERENCES `clientes`(`id`) ON DELETE RESTRICT ON UPDATE RESTRICT; 
+ALTER TABLE `ventas` 
+  ADD FOREIGN KEY (`id_vendedor`) REFERENCES `usuarios`(`id`) ON DELETE RESTRICT ON UPDATE RESTRICT; 
+ */
 
-ALTER TABLE `ventas` ADD FOREIGN KEY (`id_cliente`) REFERENCES `clientes`(`id`) ON DELETE RESTRICT ON UPDATE RESTRICT; ALTER TABLE `ventas` ADD FOREIGN KEY (`id_vendedor`) REFERENCES `usuarios`(`id`) ON DELETE RESTRICT ON UPDATE RESTRICT; 
+--
+-- Filtros para la tabla `productos`
+--
+ALTER TABLE `productos`
+  ADD CONSTRAINT `productos_ibfk_1` FOREIGN KEY (`id_categoria`) REFERENCES `categorias` (`id`);
+
+--
+-- Filtros para la tabla `ventas`
+--
+ALTER TABLE `ventas`
+  ADD CONSTRAINT `ventas_ibfk_1` FOREIGN KEY (`id_cliente`) REFERENCES `clientes` (`id`),
+  ADD CONSTRAINT `ventas_ibfk_2` FOREIGN KEY (`id_vendedor`) REFERENCES `usuarios` (`id`);
+COMMIT;
+
 
 INSERT INTO `categorias` (`id`, `categoria`, `fecha`) VALUES
 (1, 'Equipos Electromecánicos', '2017-12-21 18:29:27'),

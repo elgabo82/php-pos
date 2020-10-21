@@ -26,7 +26,7 @@ $('.tablaProductos').DataTable({
         "sLengthMenu": "Mostrar _MENU_ registros",
         "sZeroRecords": "No se encontraron resultados.",
         "sEmptyTable": "No hay datos disponibles.",
-        "sInfo": "Mostrando registros del _START_ al _END_ de _TOTAL_.",
+        "sInfo": "Registros del _START_ al _END_ de _TOTAL_.",
         "sInfoEmpty": "Sin registros.",
         "sInfoFiltered": "(Filtro de un total de _MAX_ registros)",
         "sInfoPostFix": "",
