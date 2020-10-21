@@ -51,6 +51,25 @@ CREATE TABLE `clientes` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
+
+CREATE TABLE `ventas` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `codigo` int(11) NOT NULL,
+  `id_cliente` int(11) NOT NULL,
+  `id_vendedor` int(11) NOT NULL,
+  `productos` text COLLATE utf8_spanish_ci NOT NULL,
+  `impuesto` float NOT NULL,
+  `neto` float NOT NULL,
+  `total` float NOT NULL,
+  `metodo_pago` text COLLATE utf8_spanish_ci NOT NULL,
+  `fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+
+
+ALTER TABLE `ventas` ADD FOREIGN KEY (`id_cliente`) REFERENCES `clientes`(`id`) ON DELETE RESTRICT ON UPDATE RESTRICT; ALTER TABLE `ventas` ADD FOREIGN KEY (`id_vendedor`) REFERENCES `usuarios`(`id`) ON DELETE RESTRICT ON UPDATE RESTRICT; 
+
 INSERT INTO `categorias` (`id`, `categoria`, `fecha`) VALUES
 (1, 'Equipos Electromecánicos', '2017-12-21 18:29:27'),
 (2, 'Taladros', '2017-12-21 17:56:23'),

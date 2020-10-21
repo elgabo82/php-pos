@@ -34,8 +34,7 @@
                   <div class="form-group">
                     <div class="input-group">
                       <span class="input-group-text"><i class="fas fa-user"></i></span>
-                      <input type="text" class="form-control" id="nuevoVendedor" name="nuevoVendedor" value="<?php echo $_SESSION["nombre"]; ?>" readonly>
-                      <input type="hidden" name="idVendedor" value="<?php echo $_SESSION["id"]; ?>">
+                      <input type="text" class="form-control" id="nuevoVendedor" name="nuevoVendedor" value="Usuario Administrador" readonly>
                     </div>
                   </div>
 
