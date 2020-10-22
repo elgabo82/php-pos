@@ -42,7 +42,7 @@ class TablaProductosVentas{
                 
 
                 //$botones = "<div class='btn-group'><button class='btn btn-warning btnEditarProducto' name='btnEditarProducto' idProducto='".$productos[$i]["id"]."' data-toggle='modal' data-target='#modalEditarProducto'><i class='fas fa-edit'></i></button><button class='btn btn-danger btnEliminarProducto' name='btnEliminarProducto' idProducto='".$productos[$i]["id"]."' codigo='".$productos[$i]["codigo"]."' imagen='".$productos[$i]["imagen"]."'><i class='fa fa-times'></i></button></div>";
-                $botones = "<div class='btn-group'><button class='btn btn-primary agregarProducto recuperarBoton' idProducto='".$productos[$i]["id"]."'>Agregar</button></div>";
+                $botones = "<div class='btn-group'><button class='btn btn-primary agregarProducto recuperarBoton' name='agregarProducto' id='agregarProducto' idProducto='".$productos[$i]["id"]."'>Agregar</button></div>";
             
                 $datosJson.='[
                     "'.($i+1).'",  

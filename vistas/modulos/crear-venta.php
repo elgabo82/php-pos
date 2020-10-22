@@ -27,7 +27,7 @@
             <div class="card-header">
               <h3 class="card-title">Ventas</h3>
             </div>
-            <form role="form" method="post">
+            <form role="form" method="post" class="formularioVenta">
               <div class="card-body">              
                 <div class="card">
                   <!-- Vendedor -->
@@ -93,42 +93,11 @@
 
                   <!-- Entrada del producto -->
                   <div class="row nuevoProducto">
-                    <!-- Descripción del producto-->
-                    <div class="col-sm-6" style="padding-right: 0px">
-                      <div class="form-group">
-                        <div class="input-group">
-                          <div class="input-group-prepend">
-                            <span class="input-group-text">
-                              <button class="btn btn-danger btn-xs"><i class="fas fa-times-circle"></i></button>
-                            </span>
-                          </div>                                
-                          <input type="text" class="form-control" id="agregarProducto" name="agregarProducto" placeholder="Producto" required>
-                        </div>                            
-                      </div>
-                    </div>
-
-                    <!-- Cantidad del producto -->
-                    <div class="col-sm-2">
-                      <input type="number" class="form-control" id="nuevaCantidadProducto" name="nuevaCantidadProducto" min="0" placeholder="0" required>
-                    </div>
-
-                    <!-- Precio del producto -->
-                    <div class="col-sm-4" style="padding-left: 0px">
-                      <div class="form-group">
-                        <div class="input-group">
-                          <div class="input-group-prepend">
-                            <span class="input-group-text">
-                              <i class="ion ion-social-usd"></i>
-                            </span>
-                          </div>                                
-                          <input type="number" class="form-control" id="nuevoPrecioProducto" name="nuevoPrecioProducto" min="1" placeholder="00000" readonly required>
-                        </div>
-                      </div>
-                    </div>
+                
                   </div>
 
                   <!-- Botón agregar producto -->
-                  <button type="button" class="btn btn-default hidden-lg">Agregar Producto</button>
+                  <!-- <button type="button" class="btn btn-default hidden-lg">Agregar Producto</button> -->
                   
                   <!-- Impuesto y total de venta -->
                   <div class="row">
