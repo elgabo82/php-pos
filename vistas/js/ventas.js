@@ -55,8 +55,23 @@ $(document).on("click", "button.agregarProducto", function(){
         success: function(respuesta) {
             // console.log("respuesta", respuesta);
             var descripcion = respuesta["descripcion"];
-            var stock = respuesta["stock"];
+            var stock = respuesta["stock"];      
             var precio = respuesta["precio_venta"];
+
+            if (respuesta["stock"] == 0) {
+              Swal.fire({
+                type: "error",
+                title: "¡Atención!",
+                text: "¡No hay disponibilidad del producto!",
+                icon: "error",
+                confirmButtonText: "Cerrar"
+              });
+              
+              $("button[idProducto='"+idProducto+"']").addClass("btn-primary agregarProducto");
+              return;             
+              
+            }
+
             $(".nuevoProducto").append('<div class="row" style="padding:5px 15px">'+
             '<!-- Descripción del producto-->'+
             '<div class="col-sm-6" style="padding-right: 0px">'+
@@ -99,12 +114,46 @@ $(document).on("click", "button.agregarProducto", function(){
     });    
 });
 
+/*$(document).on("click", "button.agregarProducto", function(){
+  Swal.fire({
+    type: "error",
+    title: "¡Atención!",
+    text: "¡No hay disponibilidad del producto!",
+    icon: "error",
+    confirmButton: "Cerrar"
+  });
+});*/
+
+/*$(".tablaProductosVentas").on("draw.dt", function(){
+  console.log("Tabla cargada");
+
+  if (localStorage.getItem("quitarProducto") != null) {
+    var listaIdProductos = JSON.parse(localStorage.getItem("quitarProducto"));
+
+    for (var i = 0; i < listaIdProductos.length; i++) {
+      $("button.recuperarBoton[idProducto='"+listaIdProductos[i]["idProducto"]+"']").removeClass('btn-default');
+      $("button.recuperarBoton[idProducto='"+listaIdProductos[i]["idProducto"]+"']").addClass('btn-primary agregarProducto');      
+    }
+  }
+
+})*/
 
 // Quitar productos y reactivar el botón agregar del botón
 $(document).on("click", "button.quitarProducto", function(){
 
     $(this).parent().parent().parent().parent().parent().parent().remove();
     var idProducto = $(this).attr("idProducto");
+
+    /*if (localStorage.getItem("quitarProducto") == null){
+      idQuitarProducto = [];
+    }
+    else {
+      idQuitarProducto.concat(localStorage.getItem("quitarProducto"));
+    }
+
+    idQuitarProducto.push({"idProducto": idProducto});
+
+    localStorage.setItem("quitarProducto", JSON.stringify(idQuitarProducto));*/
 
     $("button.recuperarBoton[idProducto='"+idProducto+"']").removeClass('btn-default');
     $("button.recuperarBoton[idProducto='"+idProducto+"']").addClass('btn-primary agregarProducto');
