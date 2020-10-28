@@ -62,7 +62,6 @@
                           echo '<input type="text" class="form-control" id="nuevaVenta" name="nuevaVenta" value="'.$codigo.'" readonly>';
                         }
                       ?>
-
                       
                     </div>
                   </div>
@@ -88,17 +87,19 @@
                       <span class="input-group-text">                          
                         <button class="btn btn-default btn-xs" data-toggle="modal" data-target="#modalAgregarCliente" data-dismiss="modal">Agregar Cliente</button>
                       </span>
-                    </div>
+                    </div>                    
+                  </div>
+
+                  <div class="row nuevoProducto">
+                  
                   </div>
 
                   <!-- Entrada del producto -->
-                  <div class="row nuevoProducto">
-                
-                  </div>
-
-                  <!-- Botón agregar producto -->
-                  <!-- <button type="button" class="btn btn-default hidden-lg">Agregar Producto</button> -->
-                  
+                  <div class="form-group">
+                  <!-- Botón agregar producto -->                  
+                  <button type="button" class="btn btn-default hidden-lg btnAgregarProducto" name="btnAgregarProducto" id="btnAgregarProducto">Agregar Producto</button>
+                  </div>                  
+                                    
                   <!-- Impuesto y total de venta -->
                   <div class="row">
                     <table class="table no-border">
